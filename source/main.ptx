@@ -54,6 +54,27 @@
         <p>Hello</p>
       </section>
 
+      <section xml:id="sec-program">
+        <title>Hello World program</title>
+        <example>
+          <title>Simple Java Program</title>
+          <text>
+            <![CDATA[
+            Let's write a simple Java program that prints "Hello, World!" to the console:
+            ]]>
+          </text>
+          <program interactive="activecode" language="java">
+            <![CDATA[
+            public class HelloWorld {
+              public static void main(String[] args) {
+                System.out.println("Hello, World!");
+              }
+            }
+            ]]>
+          </program>
+        </example>
+      </section>
+
     </chapter>
 
     <backmatter xml:id="backmatter">
