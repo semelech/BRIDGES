@@ -19,6 +19,24 @@ var ptx_lunr_docs = [
   "body": " Section title  Hello  "
 },
 {
+  "id": "sec-program",
+  "level": "1",
+  "url": "sec-program.html",
+  "type": "Section",
+  "number": "1.2",
+  "title": "Hello World program",
+  "body": " Hello World program   Simple Java Program  Let's write a simple Java program that prints \"Hello, World!\" to the console:  public class HelloWorld { public static void main(String[] args) { System.out.println(\"Hello, World!\"); } }   "
+},
+{
+  "id": "example-1",
+  "level": "2",
+  "url": "sec-program.html#example-1",
+  "type": "Example",
+  "number": "1.2.1",
+  "title": "Simple Java Program.",
+  "body": " Simple Java Program  Let's write a simple Java program that prints \"Hello, World!\" to the console:  public class HelloWorld { public static void main(String[] args) { System.out.println(\"Hello, World!\"); } }  "
+},
+{
   "id": "colophon-2",
   "level": "1",
   "url": "colophon-2.html",
