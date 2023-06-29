@@ -15,8 +15,8 @@ var ptx_lunr_docs = [
   "url": "section-title.html",
   "type": "Section",
   "number": "1.1",
-  "title": "Section title",
-  "body": " Section title  Hello  "
+  "title": "About BRIDGES",
+  "body": " About BRIDGES    Provides easy-to-use interfaces to exciting, engaging real-world data (social networks, scientific data, etc), to make it possible for their use in freshmen\/sophomore level CS courses    Makes it easy to visualize course assignments in a CS1, CS2, data structures, or algorithm courses    Is carefully designed to augment the student experience in routine introductory courses in Computer Science    "
 },
 {
   "id": "sec-program",
