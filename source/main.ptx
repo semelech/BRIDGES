@@ -12,15 +12,15 @@
   </docinfo>
 
   <book xml:id="my-great-book">
-    <title>BRIDGES</title>
-    <subtitle>An example to get you started</subtitle>
+    <title>Data Structures and Algorithms</title>
+    <subtitle>BRIDGES</subtitle>
 
     <frontmatter xml:id="frontmatter">
       <titlepage>
         <author>
-          <personname>You</personname>
-          <department>Your department</department>
-          <institution>Your institution</institution>
+          <personname>Sydney Melech</personname>
+          <department>Computing and Informatics</department>
+          <institution>University of North Carolina at Charlotte</institution>
         </author>
         <date>
           <today />
@@ -47,11 +47,28 @@
     </frontmatter>
 
     <chapter xml:id="chapter-title">
-      <title>Chapter title</title>
+      <title>Introduction</title>
 
       <section xml:id="section-title">
-        <title>Section title</title>
-        <p>Hello</p>
+        <title>About BRIDGES</title>
+        <ol>
+          <li>
+            <p>
+              Provides easy-to-use interfaces to exciting, engaging real-world data (social networks, scientific data, etc), 
+              to make it possible for their use in freshmen/sophomore level CS courses
+            </p>
+          </li>
+          <li>
+            <p>
+              Makes it easy to visualize course assignments in a CS1, CS2, data structures, or algorithm courses
+            </p>
+          </li>
+          <li>
+            <p>
+              Is carefully designed to augment the student experience in routine introductory courses in Computer Science
+            </p>
+          </li>
+        </ol>
       </section>
 
       <section xml:id="sec-program">
