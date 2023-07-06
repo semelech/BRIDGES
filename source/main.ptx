@@ -46,10 +46,10 @@
       </colophon>
     </frontmatter>
 
-    <chapter xml:id="chapter-title">
+    <chapter xml:id="chapter-Intro">
       <title>Introduction</title>
 
-      <section xml:id="section-title">
+      <section xml:id="section-Bridges">
         <title>About BRIDGES</title>
         <ol>
           <li>
@@ -71,7 +71,9 @@
         </ol>
       </section>
 
-      <section xml:id="sec-program">
+    <datafile label="BridgesJAR" filename="bridges-java-3.4.2.jar">
+
+      <section xml:id="section-program">
         <title>Hello World program</title>
         <example>
           <title>Simple Java Program</title>
@@ -90,6 +92,144 @@
             ]]>
           </program>
         </example>
+      </section>
+
+    </chapter>
+
+    <chapter xml:id="chapter-OOP">
+      <title>Object-oriented Programming</title>
+
+      <section xml:id="section-ITOOP">
+        <title>Introduction to Object-oriented Programming</title>
+
+        <p>Object-oriented programming (OOP) is a programming paradigm based on the concept of objects, which are data structures that contain data, in the form of fields (or attributes) and code, in the form of procedures, (or methods). 
+        A distinguishing feature of objects is that an object’s procedures provide access to and modify its fields.</p>
+        <p>In object-oriented programming, computer programs are designed by making them out of objects that interact with one another. 
+        There is significant diversity in object-oriented programming, but most popular languages are class-based, meaning that objects are instances of classes, which typically also determines their type.</p>
+        <p>Object orientation is an outgrowth of procedural programming. Procedural programming is a programming paradigm, derived from structured programming, based upon the concept of the procedure call. 
+        Procedures, also known as routines, subroutines, or methods define the computational steps to be carried out.</p>
+        <p>Any given procedure might be called at any point during a program’s execution, including by other procedures or itself. 
+        Procedural programming is a list or set of instructions telling a computer what to do step by step and how to perform from the first code to the second code. 
+        Procedural programming languages include C, Fortran, Pascal, and BASIC.</p>
+        <p>The focus of procedural programming is to break down a programming task into a collection of variables, data structures, and subroutines, whereas in object-oriented programming it is to break down a programming task into objects that expose behavior (methods) and data (fields) using interfaces. 
+        The most important distinction is that while procedural programming uses procedures to operate on data structures, object-oriented programming bundles the two together, so an object, which is an instance of a class, operates on its “own” data structure.</p>
+
+      </section>
+
+      <section xml:id="sec-POOOP">
+        <title>Principles of Object-oriented Programming</title>
+
+        <subsection xml:id="subsec-Encap">
+          <title>Encapsulation</title>
+          <p>
+            Encapsulation refers to the creation of self-contained modules (classes) that bind processing functions to its data members. 
+            The data within each class is kept private. 
+            Each class defines rules for what is publicly visible and what modifications are allowed.
+          </p>
+        </subsection>
+
+        <subsection xml:id="subsec-Inherit">
+          <title>Inheritancr</title>
+          <p>
+            Classes may be created in hierarchies, and inheritance lets the structure and methods in one class pass down the class hierarchy. 
+            By inheriting code, complex behaviors emerge through the reuse of code in a parent class. If a step is added at the bottom of a hierarchy, only the processing and data associated with that unique step must be added. 
+            Everything else above that step may be inherited. 
+            Reuse is considered a major advantage of object orientation.
+          </p>
+        </subsection>
+
+        <subsection xml:id="subsec-Poly">
+          <title>Polymorphism</title>
+          <p>
+            Object oriented programming lets programmers create procedures for objects whose exact type is not known until runtime. 
+            For example, a screen cursor may change its shape from an arrow to a line depending on the program mode. 
+            The routine to move the cursor on screen in response to mouse movement can be written for “cursor”, and polymorphism lets the right version for the given shape be called.
+          </p>
+        </subsection>
+
+        <subsection xml:id="subsec-Abs">
+          <title>Abstraction</title>
+          <p>
+            An abstraction denotes the essential characteristics of an object that distinguish it from all other kinds of objects and thus provide crisply defined conceptual boundaries, relative to the perspective of the viewer. [Booch]
+            Abstraction denotes a model, a view, or some other focused representation for an actual item. 
+            It’s the development of a software object to represent an object we can find in the real world. 
+            Encapsulation hides the details of that implementation.
+          </p>
+        </subsection>
+
+      </section>
+
+      <section xml:id="sec-UML">
+        <title>The Unified Modeling Language</title>
+
+        <p>
+          The Unified Modeling Language, or UML, is an industry standard graphical notation for describing and analysing software designs. 
+          The symbols and graphs used in the UML are an outgrowth of efforts in the 1980’s and early 1990’s to devise standards for Computer-Aided Software Engineering (CASE). 
+          UML represents a unification of these efforts. In 1994 - 1995 several leaders in the development of modeling languages, Grady Booch, Ivar Jacobson, and James Rumbaugh, attempted to unify their work. 
+          To eliminate the method fragmentation that they concluded was impeding commercial adoption of modeling tools, they developed UML, which provided a level playing field for all tool vendors.
+        </p>
+        <p>
+          UML has been accepted as a standard by the Object Management Group (OMG). 
+          The OMG is a non-profit organization with about 700 members that sets standards for distributed object-oriented computing.
+        </p>
+        <p>
+          UML was initially largely funded by the employer of Booch, Jacobson & Rumbaugh, aka the three amigos, Rational Software, which was sold to IBM in 2002.
+        </p>
+        <p>
+          A software model is any textual or graphic representation of an aspect of a software system. 
+          This could include requirements, behavior, states or how the system is installed. 
+          The model is not the actual system, rather it describes different aspects of the system to be developed. 
+          UML defines a set of diagrams and corresponding rules that can be used to model a system. 
+          The diagrams in the UML are generally divided into two broad categories or views, static and dynamic.
+        </p>
+        <p>
+          This course does not provide anywhere near a comprehensive review of the UML. 
+          The intent is to introduce you to the basics you need to understand the designs presented in this course. 
+          Since there is an excellent chance you will encounter the UML or something very similar to it in your professional career and the diagrams used in this course are used not only in the UML, but in other modeling systems as well.
+        </p>
+        
+      </section>
+
+      <section xml:id="sec-Testing">
+        <title>Testing vs Debugging</title>
+
+        <p>
+          When we “write a program”, we actually spend most of our time testing and debugging. 
+          These are two separate things. 
+          Testing refers to determining whether the program operates as we intend. 
+          Debugging refers to correcting the program once we determine that it is not operating as we intend. 
+          So we can only debug to the extent that we have tested and determined that there is a problem that needs to be corrected. 
+          Debugging to fix a known problem can sometimes be extremely hard, but is often somewhat mechanical. 
+          Testing requires a lot of skill and empathy, in order to think of all of the ways that a program might go wrong (in particular, all of the input paths to the program that might affect its behavior).
+        </p>
+        
+      </section>
+
+      <section xml:id="sec-UnitTest">
+        <title>Unit Testing</title>
+
+        <subsection xml:id="subsec-WhyUnitTest">
+          <title>Why do we need unit testing?</title>
+          <p>
+            Software evolves over time. Thus, we should adapt to change rather than stick to a strict plan. 
+            Software development is a collaborative process: many individuals work on different parts of the software to build something that meets customer needs, and different individuals perform different roles iteratively to determine a product's future. 
+            We work with new technologies, ever-changing requirements, people movement, or a combination of these. 
+            All of these determine that software projects involve a lot of uncertainties. 
+            People say that the only constant is uncertainty. 
+            To overcome the fear and manage these uncertainties, we need a software development practice that can help us produce working software. 
+            It must keep things simple and provide us quick feedback in case things go wrong. We need to verify the working software when change happens.
+          </p>
+          <p>
+            Test-driven development (TDD) is one of the practices of Agile software development that a lot of developers use in some shape or form. 
+            The premise of TDD is that you write a failing test case before you write the production code itself. 
+            TDD, if done correctly, can help you write software that meets customer expectations, has a simple design, and has fewer defects.
+          </p>
+          <image source="path (no extension)" width="20%">
+            <description>(for accessibility)</description>
+          
+          
+        </subsection>
+        
       </section>
 
     </chapter>
