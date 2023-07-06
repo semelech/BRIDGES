@@ -71,7 +71,6 @@
         </ol>
       </section>
 
-    <datafile label="BridgesJAR" filename="bridges-java-3.4.2.jar">
 
       <section xml:id="section-program">
         <title>Hello World program</title>
@@ -173,7 +172,7 @@
           The OMG is a non-profit organization with about 700 members that sets standards for distributed object-oriented computing.
         </p>
         <p>
-          UML was initially largely funded by the employer of Booch, Jacobson & Rumbaugh, aka the three amigos, Rational Software, which was sold to IBM in 2002.
+          UML was initially largely funded by the employer of Booch, Jacobson and Rumbaugh, aka the three amigos, Rational Software, which was sold to IBM in 2002.
         </p>
         <p>
           A software model is any textual or graphic representation of an aspect of a software system. 
@@ -224,8 +223,6 @@
             The premise of TDD is that you write a failing test case before you write the production code itself. 
             TDD, if done correctly, can help you write software that meets customer expectations, has a simple design, and has fewer defects.
           </p>
-          <image source="path (no extension)" width="20%">
-            <description>(for accessibility)</description>
           
           
         </subsection>
