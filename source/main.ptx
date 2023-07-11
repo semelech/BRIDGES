@@ -51,6 +51,16 @@
 
       <section xml:id="section-Bridges">
         <title>About BRIDGES</title>
+        <p>
+          BRIDGES is an API/Toolkit for providing easy-to-use interfaces to real-world data and internet-based information systems, that are exciting and engaging, such as social network data (Reddit), entertainment (movies, songs), encyclopaedia type systems (Wikipedia, Gutenberg books), scientific/engineering (USGIS Earthquakes) or geographic (city, county, countries, OpenStreet Map, Elevation), entertainment repositories (IMDB, GeniusAPI) data. 
+          The BRIDGES toolkit provides a set of classes in C++, Java and Python, to support early CS courses, such CS1/CS2 and Data Structures/Algorithm Analysis. 
+          See the BRIDGES home page for examples and a short video on an introduction to BRIDGES.
+        </p>
+        <url href="https://bridgesuncc.github.io/" visual="https://bridgesuncc.github.io/">Bridges home page</url>
+
+        <p>
+          How does Bridges help:
+        </p>
         <ol>
           <li>
             <p>
@@ -71,6 +81,15 @@
         </ol>
       </section>
 
+      <section xml:id="sec-Setup">
+        <title>Setting up Bridges</title>
+
+        <p>
+          Here is a link to setting up Bridges on your computer in NetBeans:
+          <url href="https://bridgesuncc.github.io/bridges_setup_java_netbeans.html" visual="https://bridgesuncc.github.io/bridges_setup_java_netbeans.html">Bridges setup</url>
+        </p>
+        
+      </section>
 
       <section xml:id="section-program">
         <title>Hello World program</title>
@@ -91,6 +110,16 @@
             ]]>
           </program>
         </example>
+      </section>
+
+      <section xml:id="sec-SmileyFace">
+        <title>Simple Smiley Face</title>
+        
+        <p>
+          Here is a link to a simple smiley face program that you can do once Bridges is setup on your computer:
+          <url href="https://bridgesuncc.github.io/assignments/data//27-GameGridBasic/README.html">Here</url>
+        </p>
+
       </section>
 
     </chapter>
@@ -224,9 +253,726 @@
             TDD, if done correctly, can help you write software that meets customer expectations, has a simple design, and has fewer defects.
           </p>
           
+        </subsection>
+
+        <subsection xml:id="subsec-WhatUnitTest">
+          <title>What is Unit Testing?</title>
+          <p>
+            The main idea of unit testing is testing software with a small piece of source code (unit, component, and/or function) of the same software. 
+            "Unit testing" means that the software consists of "units" which are separate testable parts of the product. 
+            An individual program, class, method, function etc. can be such "unit". 
+            Unit testing allows checking whether a unit behaves as the developer intended and whether a unit corresponds to the design specifications. 
+            Unit testing provides an ability of independent testing for each software unit.
+          </p>
+          <p>
+            The advantages of unit testing is as follows:
+          </p>
+          <ul>
+            <li>
+              <p>
+                Developers looking to learn what functionality is provided by a unit and how to use it can look at the unit tests to gain a basic understanding of the unit API.
+              </p>
+            </li>
+            <li>
+              <p>
+                Unit testing allows the programmer to refactor code at a later date, and make sure the module still works correctly (i.e. Regression testing).
+              </p>
+            </li>
+            <li>
+              <p>
+                The procedure is to write test cases for all functions and methods so that whenever a change causes a fault, it can be quickly identified and fixed. 
+                Due to the modular nature of the unit testing, we can test parts of the project without waiting for others to be completed.
+              </p>
+            </li>
+          </ul>
           
         </subsection>
+
+        <subsection xml:id="subsec-JUnit">
+          <title>What is JUnit?</title>
+          <p>
+            JUnit, developed by Kent Beck and Erich Gamma, is one of the most popular unit-testing frameworks for Java developers. 
+            It was originally based on SUnit, a unit-testing framework written in Smalltalk (developed by Kent Beck). 
+            The first version of JUnit was released in 1997.
+          </p>
+          <p>
+            Prior to the introduction of JUnit, testing discipline was dominated by capture and replay testing tools.
+            These tools were black-box testing tools, which used to capture the state of the system with a given input and then try to replay it. 
+            The tests written in such a framework involved an enormous amount of effort. 
+            These tools were not designed to unit test a component as they tested the application using its graphical user interface (GUI).
+          </p>
+          <p>
+            JUnit rejected the idea of GUI-based tests. 
+            It instead provided a lightweight framework, which enabled test creation by writing code in Java. 
+            This allowed developers to build test suites for every piece of their code. 
+            Due to its benefits, JUnit was integrated with all kinds of build tools and integrated development environments (IDEs).
+          </p>
+          <p>
+            JUnit is a unit testing framework for Java programming language. 
+            It plays a crucial role test-driven development, and is a family of unit testing frameworks collectively known as xUnit. 
+            JUnit promotes the idea of "first testing then coding", which emphasizes on setting up the test data for a piece of code that can be tested first and then implemented. 
+            This approach is like "test a little, code a little, test a little, code a little." 
+            It increases the productivity of the programmer and the stability of program code, which in turn reduces the stress on the programmer and the time spent on debugging.
+          </p>
+        </subsection>
         
+      </section>
+
+      <section xml:id="sec-JUintExample">
+        <title>JUint Example</title>
+
+        <p>
+          <alert>Let us assume that we have a single class, Calculator, in a class library project. 
+          Add looks pretty reliable at first glance, but so does all the code you write. 
+          You still need to test it, if only to prove your rightness to others.</alert>
+        </p>
+        <program>
+          public class Calculator{
+            public int Add(int x, int y){
+              return x + y;
+            }
+          }
+        </program>
+        <p>
+          public class Calculator{
+        </p>
+        <p>
+          public int Add(int x, int y){
+        </p>
+        <p>
+          return x + y;
+        </p>
+        <p>
+          }
+        </p>
+        <p>
+          }
+        </p>
+
+        <p>
+          <alert>Traditionally, we write a console class or main method inside the class, for example,</alert>
+        </p>
+        <program>
+          class CalculatorTest {
+            static void Main(string[] args){
+              Calculator calculator = new Calculator();
+              int result = calculator.Add(5, 6);
+              if (result != 11)
+                throw new InvalidOperationException();
+            }
+          }
+        </program>
+        <p>
+          class CalculatorTest {
+        </p>
+        <p>
+          static void Main(string[] args){
+        </p>
+        <p>
+          Calculator calculator = new Calculator();
+        </p>
+        <p>
+          int result = calculator.Add(5, 6);
+        </p>
+        <p>
+          if (result != 11)
+        </p>
+        <p>
+          throw new InvalidOperationException();
+        </p>
+        <p>
+          }
+        </p>
+        <p>
+          }
+        </p>
+
+        <p>
+          <alert>By using Junit package, we could have:</alert>
+        </p>
+        <program>
+          class CalculatorTest{
+            public void testAdd(){
+              Calculator calculator = new Calculator();
+              assertTrue(11 == calculator.Add(5, 6));
+            }
+          }
+        </program>
+        <p>
+          class CalculatorTest{
+        </p>
+        <p>
+          public void testAdd(){
+        </p>
+        <p>
+          Calculator calculator = new Calculator();
+        </p>
+        <p>
+          assertTrue(11 == calculator.Add(5, 6));
+        </p>
+        <p>
+          }
+        </p>
+        <p>
+          }
+        </p>
+
+        <p>
+          <alert>Note:</alert>
+          <ul>
+            <li>
+              <p>
+                The key part here is writing a failing test first.
+              </p>
+            </li>
+            <li>
+              <p>
+                Remember that it is our objective to work in small steps to make sure we will never experience a sudden and unexpected test success or test failure. 
+                In practice, most developers take increasingly bigger steps, with the result of frequent surprises when they run their tests. 
+                That's where we will hopefully distinguish ourselves as test-first masters by making giant steps when moving in well-known territory and making very tiny forward and sideward steps in unknown terrain and on slippery ground. 
+                However, this strategy requires that we know how to make the tiny steps in the first place.
+              </p>
+            </li>
+            <li>
+              <p>
+                At the beginning of each step, there was a test which was directly or indirectly motivated by the requirements specification. 
+                To be able to write this test, we had to make decisions about the public interface desired for our OUT (object under test). 
+                This public interface served both to “stimulate” the test object and to verify the correct behavior.
+              </p>
+            </li>
+            <li>
+              <p>
+                This approach drove and controlled the development of our production code from the tests.
+              </p>
+            </li>
+            <li>
+              <p>
+                So far, our tests have concentrated exclusively on the externally visible behavior of the OUT. 
+                In Java this theoretically includes all methods (and variables) with public, protected, or package scope visibility. 
+                In practice we restrict ourselves to use only what is intended to be used from the outside, that is from client code, which usually leaves out protected methods and members available for subclassing. 
+              </p>
+            </li>
+          </ul>
+        </p>
+        
+      </section>
+
+      <section xml:id="sec-GameTutorial">
+        <title>Bridges Game API Tutorial</title>
+        
+        <p>
+          Here is a link to starting out Bridges Game API:
+          <url href="https://bridgesuncc.github.io/assignments/data//34-GameTutorials/README.html">Here.</url>
+          It is a simple tutorial to get you started on working with Bridges Game API.
+        </p>
+
+      </section>
+
+    </chapter>
+
+    <chapter xml:id="ch-DataStruct">
+      <title>Introduction to Data Structures and Algorithms</title>
+
+      <section xml:id="sec-DSAlgor">
+        <title>Data Structures and Algorithms</title>
+        
+        <subsection xml:id="subsec-IntroDSA">
+          <title>Introduction</title>
+
+          <p>
+            To determine the number of cities with a population exceeding 250,000 within a 500-mile radius of Dallas, Texas; 
+            to identify the count of employees in my company earning over $100,000 per year; 
+            or to assess the feasibility of connecting all telephone customers with less than 1,000 miles of cable, it is insufficient to possess the necessary information alone. 
+            We must organize that information in a manner that enables us to promptly find the answers to meet our requirements.
+          </p>
+          <p>
+            Information representation lies at the core of computer science. 
+            Most computer programs are designed not primarily for performing calculations, but for storing and retrieving information—usually with optimal speed. 
+            Hence, the study of data structures and the algorithms that manipulate them forms the essence of computer science. 
+            This book aims to assist you in comprehending how to structure information to support efficient processing.
+          </p>
+          <p>
+            In any course on Data Structures and Algorithms, you will typically encounter three key aspects:
+          </p>
+
+          <ol>
+            <li>
+              <p>
+                Introduction to commonly used data structures and algorithms, which constitute a programmer's fundamental toolkit. 
+                For many problems, a data structure or algorithm from this toolkit will provide a suitable solution. 
+                Our focus is on data structures and algorithms that have stood the test of time and proven to be most beneficial.
+              </p>
+            </li>
+            <li>
+              <p>
+                Exploration of tradeoffs and reinforcement of the idea that every data structure or algorithm entails costs and benefits. 
+                This is achieved by describing the space and time requirements associated with typical operations for each data structure. 
+                Similarly, we examine the time needed for various input types in each algorithm.
+              </p>
+            </li>
+            <li>
+              <p>
+                Instruction on measuring the effectiveness of a data structure or algorithm. Only through such evaluation can we determine which data structure from our toolkit is most suitable for a new problem. 
+                The techniques presented also enable us to assess the merits of new data structures that we or others might invent.
+              </p>
+            </li>
+          </ol>
+
+          <p>
+            When approaching problem-solving, there are often multiple approaches available. 
+            How do we choose among them? At the core of computer program design lie two goals, which can sometimes conflict:
+          </p>
+
+          <ol>
+            <li>
+              <p>
+                Designing an algorithm that is easy to understand, code, and debug.
+              </p>
+            </li>
+            <li>
+              <p>
+                Designing an algorithm that efficiently utilizes the computer's resources.
+              </p>
+            </li>
+          </ol>
+
+          <p>
+            Ideally, a resulting program embodies both of these goals. 
+            We could consider such a program to be "elegant." 
+            While the algorithms and code examples presented here strive for elegance in this sense, it is not the primary objective of this book to explicitly address issues related to goal. 
+            Such concerns primarily fall within the domain of Software Engineering. 
+            Instead, our focus primarily revolves around issues related to goal.
+          </p>
+          <p>
+            How do we measure efficiency? 
+            The method employed to evaluate the efficiency of an algorithm or computer program is known as asymptotic analysis. 
+            This analysis also allows us to define the inherent complexity of a problem. 
+            Throughout the book, we employ asymptotic analysis techniques to estimate the time cost for each algorithm presented. 
+            This enables you to compare the efficiency of different algorithms used to solve the same problem and understand how they fare against one another.
+          </p>
+          
+        </subsection>
+
+        <subsection xml:id="subsec-PhilofDS">
+          <title>Philosophy of Data Structures</title>
+
+          <p>
+            You might assume that as computers become more powerful, the importance of program efficiency diminishes. 
+            After all, processor speed and memory capacity continue to improve. 
+            Can't we rely on tomorrow's hardware to solve today's efficiency issues?
+          </p>
+          <p>
+            However, our history of computer development has shown that as computing power increases, we tend to tackle increasingly complex problems. 
+            This can take the form of more sophisticated user interfaces, larger problem sizes, or previously unsolvable computational challenges. With more complex problems, the demand for computation grows, amplifying the need for efficient programs. Unfortunately, as tasks become more intricate, they often deviate from our everyday experiences. 
+            Therefore, today's computer scientists must be well-versed in the principles of efficient program design because their everyday intuitions may not directly apply in the realm of computer programming.
+          </p>
+          <p>
+            In a broad sense, a data structure encompasses any representation of data and the operations associated with it. 
+            Even a simple integer or floating-point number stored in a computer can be seen as a basic data structure. 
+            However, the term "data structure" commonly refers to the organization or structuring of a collection of data items. 
+            For instance, a sorted list of integers stored in an array exemplifies such a structuring. 
+            These concepts are further explored in the discussion of Abstract Data Types.
+          </p>
+          <p>
+            With sufficient space to store a collection of data items, it is always possible to search for specific items, process the items in any desired order, or modify the value of individual items. 
+            The most straightforward example is an unsorted array containing all the data items. 
+            It is possible to perform all necessary operations on such an unsorted array. However, employing the appropriate data structure can make a significant difference in program efficiency. 
+            For instance, searching for a specific record in a hash table is much faster than searching for it in an unsorted array.
+          </p>
+          <p>
+            An efficient solution is one that solves the problem while adhering to the required resource constraints. 
+            These constraints can include the available space to store data (which may involve separate constraints for main memory and disk space) and the allotted time for each subtask. 
+            Sometimes, a solution is deemed efficient if it utilizes fewer resources than known alternatives, regardless of meeting specific requirements. 
+            The cost of a solution refers to the amount of resources it consumes. 
+            Typically, cost is measured in terms of a key resource, such as time, assuming that the solution fulfills other resource constraints as well.
+          </p>
+          
+        </subsection>
+
+        <subsection xml:id="subsec-SelectDS">
+          <title>Selecting a Data Structure</title>
+
+          <p>
+            It is an essential reminder that people develop programs to solve problems, yet programmers sometimes overlook this fact. 
+            Therefore, it is crucial to always bear this truth in mind when choosing a data structure to tackle a specific problem. 
+            The first step towards selecting the right data structure is analyzing the problem and determining the performance objectives that must be met. 
+            Without this initial analysis, program designers often make the mistake of using a familiar but inappropriate data structure, resulting in a slow program. 
+            Conversely, there is no point in adopting a complex representation to "enhance" a program that can achieve its performance goals through a simpler design.
+          </p>
+          <p>
+            To select a data structure for problem-solving, follow these steps:
+          </p>
+
+          <ol>
+            <li>
+              <p>
+                Analyze the problem and identify the essential operations that the data structure must support. 
+                These operations may include inserting a data item into the structure, deleting a data item, and finding a specific data item.
+              </p>
+            </li>
+            <li>
+              <p>
+                Quantify the resource limitations for each operation.
+              </p>
+            </li>
+            <li>
+              <p>
+                Choose the data structure that best satisfies the requirements identified in the previous steps.
+              </p>
+            </li>
+          </ol>
+
+          <p>
+            This three-step approach to data structure selection operationalizes a data-centric perspective in the design process. 
+            The primary focus is on the data and the operations performed on them. 
+            The next concern is finding the appropriate representation for the data, followed by implementing that representation.
+          </p>
+          <p>
+            Resource constraints, especially for critical operations like searching, inserting, and deleting data records, typically guide the selection of a data structure. 
+            Addressing questions regarding the relative significance of these operations can help in making informed decisions. 
+            Whenever you face the task of choosing a data structure, consider asking yourself the following three questions:
+          </p>
+
+          <ol>
+            <li>
+              <p>
+                Are all data items inserted into the structure at the beginning, or are insertions interspersed with other operations? 
+                Static applications, where data is loaded initially and remains unchanged, often benefit from simpler data structures for efficient implementation. 
+                In contrast, dynamic applications frequently require more intricate structures.
+              </p>
+            </li>
+            <li>
+              <p>
+                Is it possible to delete data items? If so, this may introduce additional complexity into the implementation.
+              </p>
+            </li>
+            <li>
+              <p>
+                Are all data items processed in a defined order, or does the search involve locating specific data items? 
+                "Random access" searches typically necessitate more complex data structures.
+              </p>
+            </li>
+          </ol>
+
+          <p>
+            By carefully considering these factors and evaluating the requirements of your problem, you can make informed choices when selecting an appropriate data structure.
+          </p>
+          
+        </subsection>
+
+      </section>
+
+      <section xml:id="sec-AbstractDT">
+        <title>Abstract Data Types</title>
+
+        <subsection xml:id="subsec-DataTypes">
+          <title>Abstract Data Types</title>
+          
+          <p>
+            This module introduces terminology and definitions related to techniques used in managing the complexity of computer programs. 
+            It provides clear explanations for the fundamental yet sometimes elusive terms "data item" and "data structure." 
+            We begin by discussing the basic building blocks on which data structures are constructed.
+          </p>
+          <p>
+            A type represents a set of values. 
+            For instance, the Boolean type consists of the values true and false, while the integer type encompasses whole numbers. 
+            An integer is considered a simple type since its values have no internal components. On the other hand, a bank account record typically comprises various pieces of information like name, address, account number, and balance. 
+            Such a record exemplifies an aggregate type or composite type. 
+            A data item refers to a piece of information or a record whose value is drawn from a particular type. 
+            We say that a data item belongs to a type.
+          </p>
+          <p>
+            A data type is a type that comes with a collection of operations used to manipulate it. 
+            For example, an integer variable belongs to the integer data type, and addition is one operation applicable to the integer data type.
+          </p>
+          <p>
+            It is important to distinguish between the logical concept of a data type and its physical implementation in a computer program. 
+            For instance, there exist two traditional implementations for the list data type: the linked list and the array-based list. 
+            This means that a list data type can be implemented using either a linked list or an array. 
+            However, when we are working with a more complex design and need to utilize a list, we do not necessarily require knowledge of how it is implemented. 
+            For example, a list might be used to aid in implementing a graph data structure.
+          </p>
+          <p>
+            Similarly, the term "array" can refer to both a data type and an implementation. 
+            In computer programming, "array" commonly denotes a contiguous block of memory locations, where each location stores a fixed-length data item. 
+            In this sense, an array is a physical data structure. However, "array" can also denote a logical data type consisting of a collection of data items, typically of the same type, each identified by an index number. 
+            Arrays can be implemented in various ways beyond a contiguous block of memory locations. 
+            For instance, a sparse matrix is a large two-dimensional array that only stores a relatively small number of non-zero values. 
+            It can be implemented using a linked structure or a hash table, while still providing the same interface as if it were implemented as a block of contiguous memory locations using traditional row and column indices.
+          </p>
+          <p>
+            An abstract data type (ADT) specifies a data type within a particular programming language, independent of any specific implementation. 
+            The ADT interface is defined in terms of a type and a set of operations associated with that type. 
+            The behavior of each operation is determined by its inputs and outputs. An ADT does not dictate how the data type should be implemented. 
+            The implementation details are hidden from the ADT's user, ensuring encapsulation and protecting them from external access.
+          </p>
+          <p>
+            A data structure represents the concrete implementation of an ADT. In object-oriented languages, an ADT and its implementation together form a class. 
+            Each operation associated with the ADT is implemented as a member function or method. 
+            The variables that define the storage space required by a data item are known as data members. 
+            An object is an instance of a class, meaning it is created and occupies memory during program execution.
+          </p>
+          <p>
+            The term "data structure" often refers to data stored in a computer's main memory, while "file structure" typically describes the organization of data on peripheral storage devices like disk drives or CDs.
+          </p>
+
+        </subsection>
+        
+      </section>
+
+      <section xml:id="sec-ADTGenerics">
+        <title>Abstract Data Types and Generics</title>
+        
+        <subsection xml:id="subsec-Algorithms">
+          <title>Algorithms</title>
+
+          <p>
+            At the heart of computer program design are two (sometimes conflicting) goals:
+          </p>
+
+          <ul>
+            <li>
+              <p>
+                To design an algorithm that is easy to understand, code, and debug.
+              </p>
+            </li>
+            <li>
+              <p>
+                To design an algorithm that makes efficient use of the computer's resources.
+              </p>
+            </li>
+            <li>
+              <p>
+                The method for evaluating the efficiency of an algorithm or computer program is called asymptotic analysis.
+              </p>
+            </li>
+          </ul>
+          
+        </subsection>
+
+        <subsection xml:id="subsec-GuidelineofDSSel">
+          <title>Guideline of Data Structure Selection</title>
+          
+          <p>
+            Here is a link to a Powerpoint on the guidlines to data structures:
+            <url href="https://uncc.instructure.com/courses/16965/files/21470913/download?download_frd=1">Powerpoint</url>
+          </p>
+
+        </subsection>
+
+      </section>
+
+      <section xml:id="sec-PatternTutorial">
+        <title>Pattern Tutorial</title>
+        
+        <p>
+          Here is a link to a simple Bridges pattern program:
+          <url href="https://bridgesuncc.github.io/assignments/data//25-Patterns/README.html">Here</url>
+        </p>
+
+      </section>
+      
+    </chapter>
+
+    <chapter xml:id="ch-AlgorithmAnalysis">
+      <title>Algorithm Analysis</title>
+      
+      <section xml:id="sec-PAP">
+        <title>Problems, Algorithms, and Programs</title>
+
+        <subsection xml:id="subsec-Problems">
+          <title>Problems</title>
+          
+          <p>
+            Programmers regularly encounter three distinct concepts: problems, algorithms, and computer programs.
+          </p>
+          <p>
+            A problem can be understood as a task that needs to be accomplished, typically described in terms of inputs and desired outputs. 
+            It is crucial to define a problem precisely, focusing on inputs and matching outputs, without specifying the solution method. 
+            Constraints on the resources allowable for a solution should be included in the problem definition. 
+            Every problem solvable by a computer is subject to such constraints, whether explicitly stated or implied. 
+            For instance, a computer program can only utilize available main memory and disk space, and it should execute within a reasonable timeframe.
+          </p>
+          <p>
+            Problems can be seen as mathematical functions. 
+            A function matches inputs (domain) with corresponding outputs (range). 
+            Inputs can be individual values or collections of information, referred to as parameters. 
+            A specific set of parameter values represents an instance of the problem. 
+            For example, a sorting function's input parameter might be an array of integers, and a particular array with its size and values at each position would be an instance of the sorting problem. 
+            Different instances may yield the same output, but any instance of a problem consistently produces the same output whenever the function is computed with that particular input.
+          </p>
+          <p>
+            This perspective of problems behaving like mathematical functions may differ from your intuition about how computer programs operate. 
+            You may be aware of programs where the same input value produces different outputs on separate occasions. 
+            For example, entering the "date" command in a typical Linux command line prompt provides the current date, which naturally changes with each day. 
+            However, there is more to the input of the "date" program than just the command entered. 
+            The program computes a function, and on any given day, a properly functioning "date" program with a fully specified input will always produce a single answer. 
+            The output of any computer program is entirely determined by the program's complete set of inputs. 
+            Even a "random number generator" is entirely determined by its inputs (although some random number generation systems seem to circumvent this by incorporating random inputs from external physical processes beyond the user's control). 
+            The scope of functions implementable by programs falls within the realm of Computability.
+          </p>
+
+        </subsection>
+
+        <subsection xml:id="subsec-Algorithms2">
+          <title>Algorithms</title>
+          
+          <p>
+            An algorithm refers to a method or process employed to solve a problem. 
+            If we consider the problem as a function, an algorithm serves as an implementation of that function, transforming an input into the corresponding output. 
+            Multiple algorithms can be employed to solve a single problem. 
+            Conversely, a specific algorithm is designed to solve only one problem, computing a particular function. 
+            The OpenDSA modules cover various problems, and for many of them, we will explore multiple algorithms. 
+            In the case of sorting, there are over a dozen well-known algorithms.
+          </p>
+          <p>
+            Having knowledge of multiple solutions for a problem offers the advantage of selecting the most efficient solution for a particular problem variation or class of inputs. 
+            Solution A may be more efficient than solution B for a specific problem variation or input class, while solution B may be superior for another variation or input class. 
+            For instance, one sorting algorithm may be ideal for sorting a small collection of integers (which is significant when performing the task multiple times), while another algorithm may excel at sorting a large collection of integers. 
+            A third algorithm might be the most suitable for sorting a collection of variable-length strings.
+          </p>
+          <p>
+            By definition, something can only be considered an algorithm if it possesses the following properties:
+          </p>
+
+          <ol>
+            <li>
+              <p>
+                Correctness: It accurately computes the desired function, transforming each input into the correct output. 
+                Note that every algorithm implements a function, as it maps every input to some output (even if that output is a program crash). 
+                The concern here is whether a given algorithm effectively implements the intended function.
+              </p>
+            </li>
+            <li>
+              <p>
+                Concrete Steps: It comprises a series of well-defined and comprehensible steps that can be executed by the person or machine performing the algorithm. 
+                Each step must be accomplishable within a finite amount of time. 
+                Thus, the algorithm provides a step-by-step "recipe" for problem-solving, where each step is within our capability to perform. 
+                The feasibility of executing a step may vary depending on the intended executor. 
+                For example, the steps in a cookbook recipe may be sufficiently concrete for instructing a human cook but not for programming an automated cookie-making factory.
+              </p>
+            </li>
+            <li>
+              <p>
+                Unambiguous Execution: There should be no ambiguity about which step is to be executed next. 
+                Typically, algorithms involve selection, such as the use of an "if" statement, enabling a choice of the next step. 
+                However, at the time of making the choice, the selection process must be unambiguous.
+              </p>
+            </li>
+            <li>
+              <p>
+                Finite Steps: It consists of a finite number of steps. 
+                If the algorithm's description were to comprise an infinite number of steps, it would be impossible to document or implement it as a computer program. 
+                Most algorithm description languages incorporate iteration constructs, allowing repeated actions. 
+                Programming languages feature constructs like the "while" and "for" loops to facilitate iteration. 
+                Iteration enables concise descriptions, with the actual number of steps executed controlled by the input.
+              </p>
+            </li>
+            <li>
+              <p>
+                Termination: It must terminate and not enter an infinite loop, ensuring that the algorithm reaches a conclusion.
+              </p>
+            </li>
+          </ol>
+
+        </subsection>
+
+        <subsection xml:id="subsec-Programs">
+          <title>Programs</title>
+          
+          <p>
+            We often perceive a computer program as a specific instance or tangible representation of an algorithm in a programming language. 
+            Algorithms are typically described in terms of programs or sections of programs. 
+            Naturally, multiple programs can be instances of the same algorithm since various modern programming languages can be used to implement the same set of algorithms (although some languages may offer more programmer-friendly features). 
+            In practice, the terms "algorithm" and "program" are often used interchangeably, even though they represent distinct concepts. 
+            However, by definition, an algorithm must provide sufficient detail to allow its conversion into a program when necessary.
+          </p>
+          <p>
+            The requirement for an algorithm to terminate means that not all computer programs align with the technical definition of an algorithm. 
+            An example is your operating system. Nonetheless, it is possible to consider the different tasks performed by an operating system, each with its associated inputs and outputs, as individual problems. 
+            These problems can be addressed by specific algorithms implemented within different parts of the operating system program. 
+            Each algorithm terminates once it produces the desired output for its respective problem.
+          </p>
+
+        </subsection>
+        
+      </section>
+
+      <section xml:id="sec-BWAvgCases">
+        <title>Best, Worst, and Average Cases</title>
+        
+        <p>
+          When analyzing an algorithm, we often contemplate whether to study its best, worst, or average case. 
+          Typically, the best case is not of great interest since it tends to occur rarely and may present an overly optimistic depiction of the algorithm's runtime. 
+          Analyzing the best case is not usually representative of the algorithm's behavior. 
+          However, there are exceptional scenarios where a best-case analysis proves valuable, especially when the best case is highly likely to occur. 
+          For instance, the Shellsort and Quicksort algorithms leverage the best-case running time of Insertion Sort to enhance their efficiency.
+        </p>
+        <p>
+          On the other hand, analyzing the worst case has its advantages as it guarantees a lower bound on the algorithm's performance. 
+          This becomes particularly crucial for real-time applications like air traffic control systems. 
+          In such cases, it is unacceptable to use an algorithm that performs efficiently for most situations but fails to meet performance requirements when faced with specific scenarios, such as when all airplanes approach from the same direction.
+        </p>
+        <p>
+          However, for various applications, especially when considering the cumulative cost of executing the program on multiple inputs, analyzing the worst case may not be an accurate measure of the algorithm's overall performance. 
+          In such instances, the preferred approach is often to examine the average-case running time. 
+          This allows us to understand the algorithm's typical behavior when handling inputs of size n. 
+          Nevertheless, conducting an average-case analysis is not always feasible. 
+          It requires a thorough understanding of how the actual inputs and their associated costs are distributed among all possible inputs to the program. 
+          For example, it was mentioned previously that the average-case performance of the sequential search algorithm involves examining half of the array values. 
+          However, this holds true only if the element with value K is equally likely to appear in any position within the array. 
+          If this assumption is incorrect, the algorithm may not examine half of the array values on average.
+        </p>
+        <p>
+          The characteristics of the data distribution significantly impact various search algorithms, including hashing and search trees such as Binary Search Trees (BST). 
+          Incorrect assumptions about the data distribution can lead to detrimental effects on a program's space or time performance. 
+          Conversely, unusual data distributions can sometimes be leveraged advantageously, as demonstrated by self-organizing lists.
+        </p>
+        <p>
+          In summary, for real-time applications, a worst-case analysis is often preferred. Otherwise, if sufficient knowledge about the input distribution is available, an average-case analysis is desirable. 
+          In the absence of such knowledge, resorting to a worst-case analysis becomes necessary.
+        </p>
+
+      </section>
+
+      <section xml:id="sec-ComputerorAlgorithm">
+        <title>Faster Computer, or Faster Algorithm</title>
+        
+        <p>
+          Imagine you are faced with a problem and you have an algorithm with a running time proportional to n^2, where n represents the size of the input. 
+          However, the resulting program takes ten times longer to run than desired. 
+          If you were to replace your current computer with a new one that is ten times faster, would the n^2 algorithm become acceptable? 
+          It might seem logical that the faster computer would allow you to complete your work quickly enough, even with an algorithm that has a high growth rate, as long as the problem size remains the same. 
+          But here's an interesting observation: when most people acquire a faster computer, they don't necessarily run the same problem faster; they tend to tackle a larger problem instead. 
+          For example, on your old computer, you might have been content sorting 10,000 records during your lunch break. 
+          With the new, faster computer, you might aim to sort 100,000 records in the same time. Since you won't finish your lunch any sooner, it makes sense to solve a larger problem. 
+          Additionally, due to the increased speed of the new machine, you would ideally like to sort ten times as many records.
+        </p>
+        <p>
+          If the algorithm's growth rate is linear, meaning the equation describing the running time on input size n is T(n) = cn for some constant c, then sorting 100,000 records on the new machine would take the same amount of time as sorting 10,000 records on the old machine. 
+          However, if the algorithm's growth rate exceeds cn, such as c1n^2, then it won't be possible to solve a problem ten times the size in the same amount of time on a machine that is only ten times faster.
+        </p>
+
+      </section>
+
+      <section xml:id="sec-AALecture">
+        <title>Algorithm Analysis Lecture</title>
+        
+        <p>
+          Here is the link to download the lecture: 
+          <url href="https://uncc.instructure.com/courses/16965/files/21470916/download?download_frd=1">Slides</url>
+        </p>
+
+      </section>
+
+      <section xml:id="sec-ComplexityMatters">
+        <title>Complexity Matters</title>
+        
+        <p>
+          Here is a link to an assignment to help you understand Big-Oh notation:
+          <url href="https://bridgesuncc.github.io/assignments/data//28-BigOhMatters/README.html">Here</url>
+        </p>
+
       </section>
 
     </chapter>
