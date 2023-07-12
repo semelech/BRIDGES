@@ -977,6 +977,185 @@
 
     </chapter>
 
+    <chapter xml:id="ch-LNandLL">
+      <title>Linked Nodes and Linked Lists</title>
+
+      <section xml:id="sec-Pointers">
+        <title>Pointers Syntax</title>
+
+        <subsection xml:id="subsec-Syntax">
+          <title>Syntax</title>
+
+          <p>
+            The fundamental concepts of references, pointees, dereferencing, and assigning discussed earlier are all that you require to construct reference code. 
+            However, when discussing reference code, we need to employ a familiar syntax, which may not be particularly engaging. 
+            In this case, we will utilize the Java language syntax, which offers the advantage of influencing the syntaxes of numerous other programming languages.
+          </p>
+          
+        </subsection>
+
+        <subsection xml:id="subsec-DecRV">
+          <title>Declaring a Reference Variable</title>
+
+          <p>
+            To establish a reference to a non-primitive data type (i.e., an object), one must declare a variable of that specific object's type. 
+            Similar to other variables, reference variables are declared in the same manner. 
+            The declaration includes specifying the type and identifier of the new variable, and memory is allocated to store its value. 
+            However, it is crucial to note that declaring a reference variable does not automatically assign a pointee (object) to the reference. 
+            Initially, the reference holds a "bad" value until it is assigned to an actual object.
+          </p>
+          
+        </subsection>
+
+        <subsection xml:id="subsec-RRSum">
+          <title>Reference Rules</title>
+
+          <p>
+            The rules governing reference structures remain concise, regardless of their complexity.
+            A reference variable serves as a container for storing a reference to its associated pointee. 
+            The pointee itself holds valuable information or data.
+            To access the content of a reference, the dereference operation is used. 
+            However, it is crucial to note that a reference can only be dereferenced once it has been assigned to a valid pointee. 
+            Many issues or errors related to references occur when this rule is violated.
+            Allocating a reference does not automatically assign it to refer to a specific pointee. 
+            The act of assigning the reference to a particular pointee is a distinct operation that can sometimes be overlooked.
+            When two references are assigned to each other, they start referring to the same pointee. 
+            This allows for object sharing, enabling multiple references to access and manipulate the same underlying object.
+          </p>
+          
+        </subsection>
+
+        <subsection xml:id="subsec-JRVsP">
+          <title>Java Reference Vs Pointers</title>
+
+          <p>
+            Java references possess two key features that distinguish them from the less permissive pointers found in languages like C or C++.
+          </p>
+
+          <ol>
+            <li>
+              <p>
+                Reduced bugs: Java's implementation of reference manipulation is accurate and automatic, resulting in fewer common reference-related bugs. 
+                Additionally, the Java runtime system verifies each reference value whenever it is used. 
+                As a result, if a null reference is dereferenced, the system promptly detects it on the line where the issue occurs. 
+                This stands in contrast to languages like C++ where dereferencing a null value might not cause a program crash until later stages. 
+                This ability to pinpoint problems immediately can greatly enhance a programmer's productivity by identifying the exact location of an issue.
+              </p>
+            </li>
+            <li>
+              <p>
+                Slower execution: Due to the extensive runtime implementation of reference management and the additional runtime checking, Java code tends to run slower compared to languages like C and C++. 
+                However, the advantages of improved programmer efficiency and reduced bugs make the trade-off of slower execution worthwhile for many applications.
+              </p>
+            </li>
+          </ol>
+          
+        </subsection>
+        
+      </section>
+
+      <section xml:id="sec-LinkedNodes">
+        <title>Linked Nodes</title>
+
+        <p>
+          In this module, we will introduce the concept of a link node. 
+          A link node consists of a value field and a pointer to another link node. 
+          In subsequent lessons, you will delve into linked lists, which are constructed using link nodes. 
+          However, for now, we will utilize link nodes as a straightforward means to connect various objects together.
+        </p>
+        
+      </section>
+
+      <section xml:id="sec-DoubleLL">
+        <title>Doubly Linked Lists</title>
+
+        <p>
+          The singly linked list allows direct access from a list node solely to the next node in the list. 
+          On the other hand, a doubly linked list offers the convenience of accessing both the next and preceding nodes from a list node. 
+          This is achieved by including two pointers in each doubly linked list node: one pointing to the next node (similar to the singly linked list) and another pointing to the preceding node. 
+          The primary advantage of using a doubly linked list is its ease of implementation compared to a singly linked list. 
+          Although the code for the doubly linked implementation may be slightly longer than its singly linked counterpart, it tends to be more straightforward in its purpose, making it easier to implement and debug. 
+          It is important to note that the decision to use a doubly or singly linked list should be hidden from the user of the List class.
+        </p>
+        <p>
+          Similar to the implementation of our singly linked list, the doubly linked list implementation incorporates a header node. 
+          Additionally, we introduce a tailer node at the end of the list. 
+          The tailer node, like the header node, does not contain any value and is always present. 
+          During the initialization of the doubly linked list, the header and tailer nodes are created. 
+          The data member "head" points to the header node, and "tail" points to the tailer node. 
+          These nodes simplify the insert, append, and remove methods by eliminating the need for special-case code when the list is empty or when inserting at the head or tail of the list.
+        </p>
+        
+      </section>
+
+      <section xml:id="sec-LLLecture">
+        <title>Linked List Lecture</title>
+
+        <p>
+          Here is the link to download the lecture on linked lists:
+          <url href="https://uncc.instructure.com/courses/16965/files/21470945/download?download_frd=1">Slides</url>
+        </p>
+        
+      </section>
+
+      <section xml:id="sec-LLTutorial">
+        <title>Linked List Tutorial</title>
+
+        <p>
+          Here is a link to a tutorial on building a linked list:
+          <url href="https://bridgesuncc.github.io/assignments/data//1-ListIMDB/README.html">Here</url>
+        </p>
+        <p>
+          Here is a tutorial on styling a linked list of earthquake records:
+          <url href="https://bridgesuncc.github.io/assignments/data//2-ListEQ/README.html">Here</url>
+        </p>
+        
+      </section>
+
+      <section xml:id="sec-Exercises">
+        <title>Exercises</title>
+
+        <subsection xml:id="subsec-LLVsALfirst">
+          <title>Linked Lists Vs Array Lists Exercise 1</title>
+
+          <p>
+            The assignment is to log the performance of insertion/deletion operations on ArrayLists and LinkedLists. 
+            Complete each unfinished function that has a TODO comment. 
+            Please provide comments on how your code works. Here is the main file:
+            <url href="https://uncc.instructure.com/courses/16965/files/21470870?wrap=1">main.java</url>
+          </p>
+          <p>
+            This project uses the built in ArrayList and LinkedList classes in Java.
+          </p>
+          <p>
+            You can refer to the ArrayList docs:
+            <url href="https://docs.oracle.com/javase/8/docs/api/java/util/ArrayList.html">Here</url>
+          </p>
+          <p>
+            You can refer to the LinkedList docs:
+            <url href="https://docs.oracle.com/javase/8/docs/api/java/util/LinkedList.html">Here</url>
+          </p>
+          
+        </subsection>
+
+        <subsection xml:id="subsec-LLVsALSec">
+          <title>Linked Lists Vs Array Lists Exercise 2</title>
+
+          <p>
+            Please download this word document:
+            <url href="https://uncc.instructure.com/courses/16965/files/21470628?wrap=1">Data_Structure_Operations.docx</url>
+          </p>
+          <p>
+            Fill out each cell with the BigO worst case runtime complexity of each operation for the given data structure. 
+            Also, write a couple sentences describing why each operation is the runtime you have choosen.
+          </p>
+          
+        </subsection>
+        
+      </section>
+      
+    </chapter>
+
     <backmatter xml:id="backmatter">
       <title>Backmatter</title>
 
