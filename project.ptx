@@ -36,6 +36,10 @@
       <stringparam key="debug.skip-knowls" value="yes"/>
     </target>
   </targets>
+  <target name="runestone">
+    <publication>publication/runestone.ptx</publication>
+    <output-dir>published/bridgesds</output-dir>
+  </target>
   <executables>
     <latex>latex</latex>
     <pdflatex>pdflatex</pdflatex>

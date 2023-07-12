@@ -6,6 +6,11 @@
     <macros>
       \newcommand{\R}{\mathbb R}
     </macros>
+    <document-id>bridgesds</document-id>
+    <blurb> 
+      This is a Bridges Data Structures Textbook
+      @shelf Data Structures Textbooks
+    </blurb>
     <latex-image-preamble>
       \usepackage{tikz}
     </latex-image-preamble>
