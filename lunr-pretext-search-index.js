@@ -253,6 +253,231 @@ var ptx_lunr_docs = [
   "body": " Exercises   Linked Lists Vs Array Lists Exercise 1  The assignment is to log the performance of insertion\/deletion operations on ArrayLists and LinkedLists. Complete each unfinished function that has a TODO comment. Please provide comments on how your code works. Here is the main file: main.java   This project uses the built in ArrayList and LinkedList classes in Java.  You can refer to the ArrayList docs: Here   You can refer to the LinkedList docs: Here     Linked Lists Vs Array Lists Exercise 2  Please download this word document: Data_Structure_Operations.docx   Fill out each cell with the BigO worst case runtime complexity of each operation for the given data structure. Also, write a couple sentences describing why each operation is the runtime you have choosen.   "
 },
 {
+  "id": "sec-StackTerm",
+  "level": "1",
+  "url": "sec-StackTerm.html",
+  "type": "Section",
+  "number": "6.1",
+  "title": "Stack Terminology and Implementation",
+  "body": " Stack Terminology and Implementation  The stack represents a structure similar to a list, where elements can only be inserted or removed from one end. Although this limitation makes stacks less flexible compared to lists, it also makes them highly efficient and easy to implement for the operations they support. Many applications only require the limited set of insert and remove operations provided by stacks. In such cases, using the simpler stack data structure is more efficient than using a generic list. For instance, a freelist can be implemented using a stack.  Despite their restrictions, stacks find numerous applications, leading to the development of specialized terminology associated with stacks. Accountants have been using stacks long before computers were invented, referring to them as \"LIFO\" lists, which stands for \"Last-In, First-Out.\" It is important to note that the LIFO policy of stacks means that elements are removed in the reverse order of their arrival.  The element that is accessible and can be manipulated on top of the stack is referred to as the top element. Elements are not inserted into a stack; rather, they are pushed onto the stack. Similarly, when an element is removed from a stack, it is popped. Here is a simple abstract data type (ADT) for a stack.  "
+},
+{
+  "id": "sec-LinkedStacks",
+  "level": "1",
+  "url": "sec-LinkedStacks.html",
+  "type": "Section",
+  "number": "6.2",
+  "title": "Linked Stacks",
+  "body": " Linked Stacks  The linked stack implementation is quite simple. Elements are inserted and removed only from the head of the list. A header node is not used because no special-case code is required for lists of zero or one elements.  Both the array-based and linked implementations of stacks offer constant-time operations, resulting in similar time efficiency. Therefore, neither approach has a significant advantage in terms of time efficiency. However, a comparison can be made based on the total space required by each implementation, similar to the analysis performed for list implementations.  In the case of the array-based stack, a fixed-size array needs to be declared initially, and some space is wasted whenever the stack is not full. On the other hand, the linked stack has the flexibility to shrink and grow dynamically but incurs the overhead of a link field for every element.  When implementing multiple stacks, there is a possibility to leverage the one-way growth characteristic of the array-based stack by using a single array to store two stacks. Each stack grows inward from opposite ends, as illustrated in the figure below, which can help minimize wasted space. However, this approach works best when the space requirements of the two stacks are inversely correlated. Ideally, when one stack grows, the other should shrink. This technique proves particularly effective when elements are transferred between the two stacks. In contrast, if both stacks grow simultaneously, the free space in the middle of the array will be depleted rapidly.  "
+},
+{
+  "id": "sec-StacksLecture",
+  "level": "1",
+  "url": "sec-StacksLecture.html",
+  "type": "Section",
+  "number": "6.3",
+  "title": "Stacks and Queues Lecture",
+  "body": " Stacks and Queues Lecture  Here is the link to a lecture on Stacks and Queues: Slides   "
+},
+{
+  "id": "sec-QueueTerm",
+  "level": "1",
+  "url": "sec-QueueTerm.html",
+  "type": "Section",
+  "number": "7.1",
+  "title": "Queue Terminology",
+  "body": " Queue Terminology  Similar to the stack, the queue is a list-like structure that imposes certain restrictions on accessing its elements. In a queue, elements can only be inserted at the back (enqueued) and removed from the front (dequeued). Queues operate in a manner similar to standing in line at a movie theater ticket counter. If everyone follows the rules, newcomers join the back of the line, and the person at the front of the line is the next to be served. As a result, queues release their elements in the order of their arrival.  In Britain, a line of people is referred to as a \"queue,\" and the act of joining the line to wait for service is known as \"queuing up.\" Accountants have been using queues long before computers existed and refer to them as \"FIFO\" lists, which stands for \"First-In, First-Out.\"  "
+},
+{
+  "id": "sec-ArrayvsQueues",
+  "level": "1",
+  "url": "sec-ArrayvsQueues.html",
+  "type": "Section",
+  "number": "7.2",
+  "title": "Array-Based vs Linked Queues",
+  "body": " Array-Based vs Linked Queues  Both the array-based and linked implementations of queues offer constant-time member functions. The considerations regarding space usage are similar to their respective stack implementations. However, unlike the array-based stack implementation, it is not straightforward to store two queues in the same array unless items are consistently transferred directly from one queue to the other.  The linked queue implementation is a straightforward adaptation of the linked list. In terms of time efficiency, both implementations provide constant-time operations, ensuring efficient queue functionality. However, the choice between array-based and linked implementations may depend on specific space requirements and the need for dynamic resizing.  "
+},
+{
+  "id": "sec-QueuesTutorial",
+  "level": "1",
+  "url": "sec-QueuesTutorial.html",
+  "type": "Section",
+  "number": "7.3",
+  "title": "Snake with Queues Tutorial",
+  "body": " Snake with Queues Tutorial   Goals    The classic game of Snake. Move a \"snake\" (line of sprites) along a 2D grid attempting to run over a randomly placed object to help it grow.    If it runs into itself the game is over and the player has lost.    The object of the game is to make the snake as big as possible.    Represent the snake as a queue    The Snake must avoid bombs that make it smaller      Programming Tasks    Create a function that generates the apple object into a random cell on the grid.    Create a function that generates the bomb object into a random cell on the grid.    Create a function that handles the condition of the snakes head interacting with the food object. Make sure the snakes body grows and the object is gone after a collision. The growing will use enqueuing of a linked list.    Create a function that handles the condition of the snakes head interacting with the bomb object. Make sure the snakes body shrinks and the object is gone after a collision. The shrinking will use dequeuing of a linked list.    Implement enqueue and dequeue functionality      Getting Started  You can begin by downloading the starting class here: SnakeScaffold-1.java   There will be 7 functions that will need editing:    initialize() \/\/Init the queue and size of snake (10 points)    plantBomb() \/\/Choose bomb position on board (10 points)    plantApple() \/\/Choose apple position on board (10 points)    detectApple() \/\/Detect if snake collides with apple (5 points)    detectBomb() \/\/Detect if snake collides with bomb (5 points)    enqueue() \/\/ enqueue a Block object onto the snake (10 points)    dequeue() \/\/dequeue a Block object from the snake (10 points)    Each of these functions have corresponding TO-DO comments on how to complete them. It is recommended to complete these functions in the order above. To move the snake you can use the arrow keys.    Visualizing the Program  You must use the https:\/\/bridges-games.herokuapp.com site to run and test your project. You should be able to use the same BRIDGES account on this site. Once you run your code, the program will continue to run until stopped manually. Once you run your code you can go onto the site, and go to your assignments page. From here you can click the \"connect to game button\" that will start the game.  If you would like to stop your game, you can manually stop the program from your IDE. Before running the program again, you must manually stop your program from the IDE. If you forget this step, the program will run multiple instances of the game creating some errors in server communication. If this happens, just close and reopen the project IDE.   "
+},
+{
+  "id": "sec-IntroSort",
+  "level": "1",
+  "url": "sec-IntroSort.html",
+  "type": "Section",
+  "number": "8.1",
+  "title": "Introduction to Sorting",
+  "body": " Introduction to Sorting  Sorting is a common task in our daily lives, whether it's organizing playing cards, arranging paperwork, or categorizing items like jars of spices. Sorting also plays a crucial role in computing tasks, such as efficiently searching a database, optimizing mailing lists, or assisting algorithms in solving complex problems. For instance, graph algorithms like Kruskal's algorithm require sorting edges by their lengths before processing them.  Due to its significance, sorting has been extensively studied, leading to the development of various algorithms. Some of these algorithms mirror our intuitive sorting strategies, like Insertion Sort, which resembles how we sort cards in a hand of Bridge. Others, designed for sorting large datasets on computers, may seem unfamiliar in their approach. For instance, Quicksort is commonly used in software libraries despite its unconventional method for organizing bills by date.  Sorting remains an active field of research, with ongoing efforts to refine existing algorithms and develop new ones tailored for specific applications. Exploring sorting algorithms not only introduces us to this fundamental problem in computer science but also delves into algorithm design and analysis. We learn different techniques, such as divide and conquer, demonstrated by various sorting approaches. Additionally, sorting algorithms offer valuable insights into algorithm analysis, showcasing variations in growth rates between average and worst cases, exploiting best-case behaviors of other algorithms, and leveraging special-case behaviors for niche applications. Sorting also provides an opportunity to explore lower bound analysis, particularly in the context of external sorting, which deals with sorting large files stored on disk.  "
+},
+{
+  "id": "sec-SortingTerm",
+  "level": "1",
+  "url": "sec-SortingTerm.html",
+  "type": "Section",
+  "number": "8.2",
+  "title": "Sorting Terminology",
+  "body": " Sorting Terminology  The Sorting Problem, as defined, allows input with multiple records having the same key value. However, certain applications require input without duplicate key values. In most cases, sorting algorithms can handle duplicate key values unless explicitly specified otherwise. When duplicates are allowed, there might be an implicit ordering among them based on their occurrence in the input. Preserving this initial ordering among duplicates can be desirable. A sorting algorithm is considered stable if it maintains the relative ordering of records with identical key values. Many of the sorting algorithms discussed in this chapter are stable or can be modified to achieve stability with minor adjustments.  When comparing sorting algorithms, a straightforward approach is to implement both algorithms and measure their running times. This empirical comparison method, however, can be challenging to execute fairly, as the running time of sorting algorithms often depends on specific characteristics of the input values. Factors such as the number of records, key and record sizes, range of key values, and the degree of disorder in the input can significantly impact the relative running times of sorting algorithms.  Traditionally, the analysis of sorting algorithms focuses on measuring the cost in terms of the number of comparisons made between keys. This measure is closely related to the actual running time and offers the advantage of being independent of the specific machine or data type used. However, in certain cases, if the records are large, the physical movement of records during sorting can contribute significantly to the overall running time. In such situations, it may be appropriate to measure the cost by counting the number of swap operations performed by the algorithm. In most applications, it is assumed that all records and keys have a fixed length, and that comparisons and swaps have a constant time complexity regardless of the keys involved. However, special situations arise where the rules for comparing sorting algorithms change. For example, when dealing with records or keys of varying lengths (e.g., sorting variable-length strings), not all comparisons can be assumed to have roughly the same cost. These scenarios require specific analysis techniques and often benefit from specialized sorting techniques tailored to the specific requirements.  "
+},
+{
+  "id": "sec-ComparingRecords",
+  "level": "1",
+  "url": "sec-ComparingRecords.html",
+  "type": "Section",
+  "number": "8.3",
+  "title": "Comparing Records",
+  "body": " Comparing Records  When we want to sort or search for items, we need to compare them to determine their order. For simple values like integers or strings, we can use standard comparison operators. However, when dealing with complex data structures like records with multiple values, we need a way to compare and sort them based on a specific field called the key.  Similarly, when searching for records in a database, we typically define the search criteria using a key value rather than matching the entire contents of the record. The key value helps us locate the desired record efficiently.  To implement sorting and searching, the keys need to be comparable. At the very least, we should be able to determine if two keys are equal or not. Ideally, the keys should establish a total order, allowing us to determine their relative positions. This enables more efficient searching algorithms like binary search.  To extract the key value from a record, we can define a method called \".key()\" or use language-specific features like the Comparable interface in Java. However, using a fixed method name may not always be feasible due to naming conflicts or the need to sort or search based on different keys at different times.  An alternative approach is to use a comparator, which is a function or class responsible for extracting the key from a record. The comparator can be passed as a parameter to sorting or searching functions, allowing flexibility in handling different record types or fields. In some languages, such as Java or C++, a comparator class can be used as a parameter for defining classes like Binary Search Trees (BST).  In situations where a key extraction method is not possible, a general solution is to store key-value pairs explicitly in the data structure. For example, records can be stored in an array where each entry contains both the key value and a pointer to the record itself. This approach minimizes duplication of records and allows us to use different keys for different purposes by storing pointers in separate arrays.  Overall, the key value plays a crucial role in sorting and searching, providing a means to compare and organize data efficiently.  "
+},
+{
+  "id": "sec-InsertionSort",
+  "level": "1",
+  "url": "sec-InsertionSort.html",
+  "type": "Section",
+  "number": "8.4",
+  "title": "Insertion Sort",
+  "body": " Insertion Sort  Imagine you have a stack of phone bills from the past two years, and you want to arrange them in order by date. A natural way to tackle this task is to start with the first two bills and put them in the correct order. Then, take the third bill and place it in its proper position relative to the first two bills. You continue this process, taking each bill and adding it to the already sorted pile. This simple approach serves as the foundation for our first sorting algorithm, known as Insertion Sort.  Insertion Sort works by iterating through the list of records. During each iteration, the current record is inserted at the appropriate position within a sorted list consisting of the records already processed.  Although the best case for Insertion Sort is considerably faster than the average and worst cases, the average and worst cases provide more reliable estimates of the typical running time. However, there are scenarios where we can anticipate the input to be already sorted or nearly sorted. In such cases, Insertion Sort can be a suitable choice, especially when the disordering is minor. Even when the input is not perfectly sorted, Insertion Sort's performance is proportional to the number of inversions, making it efficient for \"nearly sorted\" lists. Shellsort and Quicksort are examples of algorithms that leverage Insertion Sort's near-best-case running time.  When counting comparisons or swaps, similar trends emerge. Each iteration of the inner for loop involves both a comparison and a swap, except for the last comparison that fails the loop's test and does not require a swap. Consequently, the number of swaps in the entire sorting operation is n-1 less than the number of comparisons. The best case has zero swaps, while the average and worst cases exhibit a Θ(n^2) complexity.  As we delve into algorithms with superior growth rates, Insertion Sort becomes less favorable for larger arrays. It is not the most efficient sorting algorithm for most situations. However, there are specific scenarios where it excels, such as when the input is already sorted or when working with very small arrays. Other algorithms with better asymptotic growth rates tend to be more complex, leading to larger constant factors in their running time. While they require fewer comparisons for larger arrays, their cost per comparison is higher. Although this observation may seem less beneficial, there are instances where numerous sorting operations are performed on very small arrays.  "
+},
+{
+  "id": "sec-SelectionSort",
+  "level": "1",
+  "url": "sec-SelectionSort.html",
+  "type": "Section",
+  "number": "8.5",
+  "title": "Selection Sort",
+  "body": " Selection Sort  Let's revisit the task of sorting a stack of phone bills for the past year. Another intuitive approach would be to go through the pile and find the bill for January, setting it aside. Then continue searching for the bill for February and place it after January. Repeat this process with the remaining bills, selecting and arranging them in order until you reach the end. This approach serves as the basis for our last Θ(n^2) sorting algorithm, known as Selection Sort.  During each pass of Selection Sort, we \"select\" the i-th largest key in the array and place it at the end. In simpler terms, we start by finding the largest key in the unsorted portion of the list, then the next largest, and so on. Selection Sort stands out with its minimal number of swaps. While searching for the next largest key value requires scanning through the entire unsorted section, only one swap is needed to position the record correctly. Consequently, the total number of swaps required will be n-1. It's worth noting that any algorithm can be implemented in various ways. For instance, we could have designed Selection Sort to find the smallest record, followed by the next smallest, and so forth. However, in our version, we aimed to closely resemble the behavior of our Bubble Sort implementation. This highlights that Selection Sort is essentially a modified version of Bubble Sort, where we keep track of the position of the record to be selected and perform a single swap at the end.  "
+},
+{
+  "id": "sec-SearchSortLecture",
+  "level": "1",
+  "url": "sec-SearchSortLecture.html",
+  "type": "Section",
+  "number": "8.6",
+  "title": "Searching and Sorting Algorithm Lecture",
+  "body": " Searching and Sorting Algorithm Lecture  Here is a link to a lecture on Searching and Sorting Algorithms: Slides   "
+},
+{
+  "id": "sec-BinarySearchLab",
+  "level": "1",
+  "url": "sec-BinarySearchLab.html",
+  "type": "Section",
+  "number": "8.7",
+  "title": "Binary Search Lab 1",
+  "body": " Binary Search Lab 1  For this lab, you will be given 3 questions. each question has a given array, a target value to look for, and a table to fill out the binary search algorithm process. In the table, for each iteration of the algorithm, you will write the: iteration, low, mid, high, comparison, reduce search space, subrange, and adjustment values. You can see examples of this assignment in the lecture slides.  Please download this file to get started: Binary Search Assignment   "
+},
+{
+  "id": "sec-BinaryLab",
+  "level": "1",
+  "url": "sec-BinaryLab.html",
+  "type": "Section",
+  "number": "8.8",
+  "title": "Binary Search Lab 2",
+  "body": " Binary Search Lab 2   Goals  Understand the Binary Search and apply its application to an array.    Tasks  We will be performing a binary search on a BRIDGES array. The array is populated of size 30 and each element holds the value of its index making it a sorted array. Your job is to find the value 3, 25 and value 100 (doesn't exist) using binary search.  Here is the starting file: BridgesArrayBinarySearch.java     Implement the Binary Search algorithm in the 'BinarySearch' function. (10 points)    For each iteration of the algorithm, color the low and high index green, the mid index 'orange', and the found element 'red' if it exists. (5 points)    Visualize the array at every iteration to see how the algorithm progresses. (5 points)    Add the link and images to the visualization that show the results of searching for 3, 25, and 100. (5 points)    To have multiple visualizations, change the integer value parameter on the line the bridges object is created. This assignment uses BRIDGES to visualize the array and the color attributes added. Every time you call the bridges visualize function, an additional visualization is added in a slideshow view. You can then play\/step through each iteration of your algorithm to help learn and debug binary search. The scaffolded code comes with the main function and 1 static function. The static function is the binary search algorithm that you will implement. The other function is just a main function that you will not need to change except for your BRIDGES credentials and the value you are searching for.   "
+},
+{
+  "id": "sec-SortingBenchmark",
+  "level": "1",
+  "url": "sec-SortingBenchmark.html",
+  "type": "Section",
+  "number": "8.9",
+  "title": "Sorting Benchmark",
+  "body": " Sorting Benchmark   Goals  Understand the performance of sorting algorithms by implementing and benchmarking them.    Tasks  We will be sorting arrays of integers. Here is the starting file: sorting.java     Implement selection sort algorithm in pseudocode. (5 points)    Implement bubble sort algorithm in pseudocode. (5 points)    Implement selection sort algorithm in Java (10 points)    Implement bubble sort algorithm in Java (10 points)    Document how the algorithm works in your code. (5 points)    Benchmark the two algorithms against the standard sorting algorithm provided in the standard library.    Take the BRIDGES Survey about the assignment (5 points)    This assignment uses BRIDGES to visualize the runtime of sorting algorithms based on the size of input array. You will need your BRIDGES account with the api key to visualize the assignment.  The scaffolded code comes with the main function and 3 static functions. One of the static functions does the built-in java sorting algorithm. You must write the selection sort algorithm in the 'sort' function and the bubble sort algorithm in the 'bubbleSort' function. The main function creates the BRIDGES objects and sorting benchmark objects for you. The input to these functions is a basic array, so no need to make any BRIDGES calls. Just write the sorting function to sort the input array. BRIDGES will log the time for you.   "
+},
+{
+  "id": "sec-RecIntro",
+  "level": "1",
+  "url": "sec-RecIntro.html",
+  "type": "Section",
+  "number": "9.1",
+  "title": "Introduction to Recursion",
+  "body": " Introduction to Recursion  An algorithm or function is considered recursive when it calls itself to perform a portion of its task. Recursion offers a way to solve complex problems using concise, easily understandable, and efficient programs. It involves breaking down a large problem into one or more sub-problems that have the same structure as the original problem but are simpler to solve. This process continues until the sub-problems become straightforward enough to be solved without further division. The final solution is then obtained by combining the solved components.  To ensure the success of a recursive approach, the recursive call to the function must operate on a smaller problem compared to the original one. Typically, a recursive algorithm consists of two parts:    The base case, which handles a simple input that can be solved directly without further recursion.    The recursive part, which includes one or more recursive calls to the algorithm. In each recursive call, the parameters should be closer to the base case than those in the original call.    Recursion doesn't have a direct counterpart in everyday problem-solving, which can make it challenging to grasp initially. When first learning recursion, it's common to focus on understanding the recursive process. However, when writing recursive functions, it's best to shift the focus away from the inner workings of recursion and instead concentrate on the recursive call. Trust that the sub-problems will be handled correctly and focus on defining the base cases and how to combine the results of the sub-problems.  Recursion is primarily used as a tool to simplify algorithm design and description. It may not always yield the most efficient program since function calls involved in recursion tend to have higher overhead compared to other alternatives like using a while loop. However, recursive approaches generally provide reasonably efficient algorithms. If needed, the clear and recursive solution can be further optimized to achieve faster implementations.  When we solve a \"big\" problem recursively, we break it down into smaller versions of the problem and solve each of them. The solutions to these smaller problems are then used to solve the original \"big\" problem. Recursive problem-solving involves tackling the smaller versions in a similar manner.  For instance, let's consider the task of summing values in an array. What sets apart summing the first 50 elements from summing the first 100 elements? We can use the same approach for both scenarios. In fact, we can even leverage the solution to the smaller problem (summing the first 50 elements) to help us solve the larger problem (summing the first 100 elements).  "
+},
+{
+  "id": "sec-RecurCode",
+  "level": "1",
+  "url": "sec-RecurCode.html",
+  "type": "Section",
+  "number": "9.2",
+  "title": "Tracing Recursive Code",
+  "body": " Tracing Recursive Code  When writing a recursive function, it is best to approach it from a top-down perspective. Instead of worrying about how the recursive call solves the sub-problem, trust that it will provide the correct solution. Treat the result of the recursive call as if it were a reliable library function that helps solve the original problem accurately.  However, when you need to read or trace a recursive function, it is essential to consider how the function works. Tracing a few recursive functions is an excellent way to understand the behavior of recursion. As you become more familiar with tracing, you will find that you rarely need to delve into all the details. You will gain confidence in your understanding of recursion.  Remember that information can be passed from one recursive call to another through function parameters. This happens on increasingly smaller problems until a base case is reached during the winding phase. Then, as the series of recursive calls unwinds, a return value is passed back. It's important not to overlook the unwinding phase, as it completes the recursive process.  "
+},
+{
+  "id": "sec-RecursionLecture",
+  "level": "1",
+  "url": "sec-RecursionLecture.html",
+  "type": "Section",
+  "number": "9.3",
+  "title": "Recursion Lecture",
+  "body": " Recursion Lecture  Here is a link to a lecture on Recursion: Slides   "
+},
+{
+  "id": "sec-QSAPractice",
+  "level": "1",
+  "url": "sec-QSAPractice.html",
+  "type": "Section",
+  "number": "9.4",
+  "title": "Quicksort Algorithm Practice",
+  "body": " Quicksort Algorithm Practice   Goals  Understand the performance of the Lomuto Quicksort Algorithm compared to the past sorting algorithms implemented this semester. Based on your completion of this assignment, you may receive up to 10% extra credit on your previous test.    Tasks  We will be sorting arrays of integers using the Lomuto Quicksort Algorithm. To do this, you will be using the same benchmarking code from your past lab.    Implement the Lomuto Quicksort algorithm in pseudocode. (1 point)    Implement the Lomuto Quicksort algorithm in your past benchmarking Java project (2 points)    Document how the algorithm works in your code using comments. (1 point)    Benchmark the algorithm against the other algorithms implemented in the past lab and show the visualization link. (1 point)    This assignment uses BRIDGES to visualize the runtime of sorting algorithms based on the size of input array. You will need your BRIDGES account with the api key to visualize the assignment.   "
+},
+{
+  "id": "sec-BinaryIntro",
+  "level": "1",
+  "url": "sec-BinaryIntro.html",
+  "type": "Section",
+  "number": "10.1",
+  "title": "Binary Trees Introduction",
+  "body": " Binary Trees Introduction  Tree structures are valuable for managing extensive data collections efficiently. Among various tree structures, binary trees are commonly employed and relatively straightforward to implement. Although binary trees are frequently used for searching purposes, their applications extend beyond that. They can accelerate tasks such as job prioritization, representing mathematical expressions and program syntax, and organizing data for compression algorithms. In this chapter, we will explore the terminology associated with binary trees, methods for traversing trees, techniques for implementing tree nodes, and several examples of binary trees.  "
+},
+{
+  "id": "sec-BTDef",
+  "level": "1",
+  "url": "sec-BTDef.html",
+  "type": "Section",
+  "number": "10.2",
+  "title": "Binary Trees Definitions and Properties",
+  "body": " Binary Trees Definitions and Properties  A binary tree is a collection of nodes, with either no elements (empty tree) or a root node and two disjoint binary subtrees, known as the left and right subtrees. The root's children are the roots of these subtrees, and an edge connects a node to each of its children. The node is considered the parent, and the children are its direct descendants.  A sequence of nodes, n1, n2, ..., nk, where ni is the parent of ni+1 for 1≤i less than k, is called a path from n1 to nk. The length of the path is k-1. If there exists a path from node R to node M, R is referred to as the ancestor of M, and M is the descendant of R. Hence, all nodes in the tree are descendants of the root, and the root is the ancestor of all nodes.  The depth of a node M in the tree is the length of the path from the root to M. The height of a tree corresponds to the depth of its deepest node. Nodes at the same depth are on the same level within the tree. The root is at level 0 and has a depth of 0. A leaf node is a node with no children, while an internal node has at least one non-empty child.  A recursive data structure is a data structure that includes smaller or simpler instances of the same data structure within itself. Linked lists and binary trees are examples of recursive data structures. In a linked list, it can be defined as either an empty list or a node followed by another list. Similarly, a binary tree is commonly defined as an empty tree or a node connected to two binary trees, one serving as its left child and the other as its right child.  "
+},
+{
+  "id": "sec-BTTraversals",
+  "level": "1",
+  "url": "sec-BTTraversals.html",
+  "type": "Section",
+  "number": "10.3",
+  "title": "Binary Tress Traversals",
+  "body": " Binary Tress Traversals   Binary Tress Traversals  Frequently, we have the need to traverse a binary tree and perform a specific action on each node, such as printing its contents. This process of visiting all the nodes in a specific order is known as a traversal. An enumeration of the tree's nodes is a traversal that lists every node exactly once. In certain applications, the order in which nodes are visited may not matter as long as each node is visited only once. However, for other applications, it is crucial to visit the nodes in an order that preserves a specific relationship.    Preorder Traversal  For example, we might wish to make sure that we visit any given node before we visit its children. This is called a preorder traversal.    Postorder Traversal  In some cases, we may want to visit each node in a binary tree only after visiting its children and their subtrees. This is necessary, for example, when we want to free up memory by deleting all nodes in the tree. We need to delete the children of a node before deleting the node itself. However, to do this, we must first delete the children's children, and so on. This type of traversal, where we visit the children nodes first and then the parent node, is known as a postorder traversal.    Inorder Traversal  An inorder traversal first visits the left child (including its entire subtree), then visits the node, and finally visits the right child (including its entire subtree). The binary search tree makes use of this traversal to print all nodes in ascending order of value.    Implementation  Next, we will explore different implementations for tree traversals. However, before we proceed, we need to define an Abstract Data Type (ADT) for binary tree nodes, which we will call BinNode. Similar to how a linked list consists of a collection of link objects, a tree is composed of a collection of node objects. The BinNode ADT provides member functions to set or retrieve the element value, obtain a pointer to the left child, retrieve a pointer to the right child, and determine if the node is a leaf. This class will be utilized in the subsequent binary tree structures that will be discussed.  Adding a parent pointer to a node can provide convenient upward movement within the tree, similar to adding a link to the previous node in a doubly linked list. However, in practice, the use of a parent pointer is often unnecessary and can increase the space overhead for the tree implementation. Moreover, relying heavily on the parent pointer can indicate a misunderstanding of recursion and result in poor programming practices. Before deciding to use a parent pointer, it's essential to consider if there is a more efficient alternative.  In pointer-based node implementations, an important design decision is whether to use the same class definition for both leaf nodes and internal nodes. While using the same class simplifies the implementation, it may not be the most space-efficient approach. Some applications only require data values for the leaf nodes, while others need different types of values for internal and leaf nodes. It may seem wasteful to store child pointers in leaf nodes if they have no children. Thus, having distinct implementations for internal and leaf nodes can provide space optimization benefits.   "
+},
+{
+  "id": "sec-BinarySearchTrees",
+  "level": "1",
+  "url": "sec-BinarySearchTrees.html",
+  "type": "Section",
+  "number": "10.4",
+  "title": "Binary Search Trees",
+  "body": " Binary Search Trees  A binary search tree (BST) is a binary tree that satisfies the binary search tree property. According to this property, all nodes in the left subtree of a node with a key value K have key values less than or equal to K, and all nodes in the right subtree have key values greater than K. An important consequence of this property is that when the BST nodes are printed using an inorder traversal, the resulting enumeration will be in sorted order, from the lowest key value to the highest.  The first operation we will examine is the search operation, which finds the record that matches a given key. In the BST class, the public member function find calls the private member function findhelp. The find method takes the search key as an explicit parameter and the BST as an implicit parameter, and it returns the record that matches the key. However, the search operation is best implemented as a recursive function that takes the root of a subtree and the search key as parameters.  Removing a node from a BST is a bit trickier than inserting a node, but it is not complicated if all of the possible cases are considered individually. Before tackling the general node removal process, we will first see how to remove from a given subtree the node with the largest key value.  "
+},
+{
+  "id": "sec-BTLecture",
+  "level": "1",
+  "url": "sec-BTLecture.html",
+  "type": "Section",
+  "number": "10.5",
+  "title": "Binary Trees Lecture",
+  "body": " Binary Trees Lecture  Here is a link to a lecture on Trees: Slides   Here is a link to a lecture on Binary Tree Traversals: Slides   "
+},
+{
+  "id": "sec-BSTExercise",
+  "level": "1",
+  "url": "sec-BSTExercise.html",
+  "type": "Section",
+  "number": "10.6",
+  "title": "Binary Search Tree Exercise",
+  "body": " Binary Search Tree Exercise   Goals  The purpose of this assignment is to learn to    Access remote data through BRIDGES.    Manipulate a binary search tree using the earthquake magnitude (or some other attribute) as a search key    Traverse BST using different methods.      Programming Tasks  Starting file: BST_eq.java   Build a binary search tree where each node represents an earthquake record  Steps:    Open your base code.    Plug in your credentials.    Complete the insert_R() function to recursively insert objects into the binary search tree. You should insert objects based on the magnitude of the earthquake.    Perform a traversal on the completed BST.    Perform a binary search to find the biggest earthquake based on magnitude and color it red.      Building The BST    Your BSTElement will use EarthquakeUSGS as the generic parameter, using Double as the key type. The key is will be the magnitude of the earthquake.    Write an insert() method, creating and inserting earthquake records into a binary search tree, using the magnitude of the quake as a search key. Color the nodes less than 3.0 magnitude orange and the nodes greater than or equal to 3.0 magnitude green (10 points)    Color the root node in a unique color. (done for you)    Perform a traversal of the tree and color leaf nodes black. (10 points)    Traverse the tree to find the largest quake and style it RED. (5 points)    Once completed, submit your code and link to the visualization. (2 points)     "
+},
+{
   "id": "colophon-2",
   "level": "1",
   "url": "colophon-2.html",

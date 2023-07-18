@@ -1,0 +1,437 @@
+<!DOCTYPE html>
+<!--********************************************-->
+<!--*       Generated from PreTeXt source      *-->
+<!--*                                          *-->
+<!--*         https://pretextbook.org          *-->
+<!--*                                          *-->
+<!--********************************************-->
+<html lang="en-US">
+<head xmlns:og="http://ogp.me/ns#" xmlns:book="https://ogp.me/ns/book#">
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+<title>Insertion Sort</title>
+<meta name="Keywords" content="Authored in PreTeXt">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta property="og:type" content="book">
+<meta property="book:title" content="Data Structures and Algorithms">
+<meta property="book:author" content="Sydney Melech">
+<script>var runestoneMathReady = new Promise((resolve) => window.rsMathReady = resolve);
+window.MathJax = {
+  tex: {
+    inlineMath: [['\\(','\\)']],
+    tags: "none",
+    tagSide: "right",
+    tagIndent: ".8em",
+    packages: {'[+]': ['base', 'extpfeil', 'ams', 'amscd', 'color', 'newcommand', 'knowl']}
+  },
+  options: {
+    ignoreHtmlClass: "tex2jax_ignore|ignore-math",
+    processHtmlClass: "process-math",
+  },
+  chtml: {
+    scale: 0.98,
+    mtextInheritFont: true
+  },
+  loader: {
+    load: ['input/asciimath', '[tex]/extpfeil', '[tex]/amscd', '[tex]/color', '[tex]/newcommand', '[pretext]/mathjaxknowl3.js'],
+    paths: {pretext: "https://pretextbook.org/js/lib"},
+  },
+  startup: {
+    pageReady() {
+      return MathJax.startup.defaultPageReady().then(function () {
+      console.log("in ready function");
+      rsMathReady();
+      }
+    )}
+  },
+};
+</script><script src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-chtml.js"></script><link href="https://cdnjs.cloudflare.com/ajax/libs/prism/1.26.0/themes/prism.css" rel="stylesheet">
+<script src="https://cdnjs.cloudflare.com/ajax/libs/prism/1.26.0/components/prism-core.min.js"></script><script src="https://cdnjs.cloudflare.com/ajax/libs/prism/1.26.0/plugins/autoloader/prism-autoloader.min.js"></script><script src="https://unpkg.com/lunr/lunr.js"></script><script src="lunr-pretext-search-index.js" async=""></script><script src="https://pretextbook.org/js/0.2/pretext_search.js"></script><link href="https://pretextbook.org/css/0.6/pretext_search.css" rel="stylesheet" type="text/css">
+<script>js_version = 0.2</script><script src="https://pretextbook.org/js/lib/jquery.min.js"></script><script src="https://pretextbook.org/js/lib/jquery.sticky.js"></script><script src="https://pretextbook.org/js/lib/jquery.espy.min.js"></script><script src="https://pretextbook.org/js/0.2/pretext.js"></script><script>miniversion=0.1</script><script src="https://pretextbook.org/js/0.2/pretext_add_on.js?x=1"></script><script src="https://pretextbook.org/js/0.2/user_preferences.js"></script><script src="https://pretextbook.org/js/lib/knowl.js"></script><!--knowl.js code controls Sage Cells within knowls--><script>sagecellEvalName='Evaluate (Sage)';
+</script><link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin="">
+<link href="https://fonts.googleapis.com/css2?family=Inconsolata:wght@400;700&amp;family=Noto+Serif:ital,wght@0,400;0,700;1,400;1,700&amp;family=Tinos:ital,wght@0,400;0,700;1,400;1,700&amp;display=swap" rel="stylesheet">
+<link href="https://fonts.cdnfonts.com/css/dejavu-serif" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Roboto+Serif:opsz,wdth,wght@8..144,50..150,100..900&amp;display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Open+Sans:wdth,wght@75..100,300..800&amp;display=swap" rel="stylesheet">
+<link href="https://pretextbook.org/css/0.6/pretext.css" rel="stylesheet" type="text/css">
+<link href="https://pretextbook.org/css/0.6/pretext_add_on.css" rel="stylesheet" type="text/css">
+<link href="https://pretextbook.org/css/0.6/shell_default.css" rel="stylesheet" type="text/css">
+<link href="https://pretextbook.org/css/0.6/banner_default.css" rel="stylesheet" type="text/css">
+<link href="https://pretextbook.org/css/0.6/navbar_default.css" rel="stylesheet" type="text/css">
+<link href="https://pretextbook.org/css/0.6/toc_default.css" rel="stylesheet" type="text/css">
+<link href="https://pretextbook.org/css/0.6/knowls_default.css" rel="stylesheet" type="text/css">
+<link href="https://pretextbook.org/css/0.6/style_default.css" rel="stylesheet" type="text/css">
+<link href="https://pretextbook.org/css/0.6/colors_blue_red.css" rel="stylesheet" type="text/css">
+<link href="https://pretextbook.org/css/0.6/setcolors.css" rel="stylesheet" type="text/css">
+<!--** eBookCongig is necessary to configure interactive       **-->
+<!--** Runestone components to run locally in reader's browser **-->
+<!--** No external communication:                              **-->
+<!--**     log level is 0, Runestone Services are disabled     **-->
+<script type="text/javascript">
+eBookConfig = {};
+eBookConfig.useRunestoneServices = false;
+eBookConfig.host = 'http://127.0.0.1:8000';
+eBookConfig.course = 'PTX_Course_Title_Here';
+eBookConfig.basecourse = 'PTX_Base_Course';
+eBookConfig.isLoggedIn = false;
+eBookConfig.email = '';
+eBookConfig.isInstructor = false;
+eBookConfig.logLevel = 0;
+eBookConfig.username = '';
+eBookConfig.readings = null;
+eBookConfig.activities = null;
+eBookConfig.downloadsEnabled = false;
+eBookConfig.allow_pairs = false;
+eBookConfig.enableScratchAC = false;
+eBookConfig.build_info = "";
+eBookConfig.python3 = null;
+eBookConfig.runestone_version = '7.0.5';
+eBookConfig.jobehost = '';
+eBookConfig.proxyuri_runs = '';
+eBookConfig.proxyuri_files = '';
+eBookConfig.enable_chatcodes =  false;
+</script>
+<!--*** Runestone Services ***-->
+<script type="text/javascript" src="https://runestone.academy/cdn/runestone/7.0.5/prefix-runtime.61a1aa562b2eef01.bundle.js"></script><script type="text/javascript" src="https://runestone.academy/cdn/runestone/7.0.5/prefix-347.193e36c07abd0197.bundle.js"></script><script type="text/javascript" src="https://runestone.academy/cdn/runestone/7.0.5/prefix-runestone.89acb6c6122954e4.bundle.js"></script><link rel="stylesheet" type="text/css" href="https://runestone.academy/cdn/runestone/7.0.5/prefix-347.f9add1ca35d5ad93.css">
+<link rel="stylesheet" type="text/css" href="https://runestone.academy/cdn/runestone/7.0.5/prefix-runestone.8d2f742bc74f4a41.css">
+</head>
+<body id="bridgesds" class="pretext book ignore-math">
+<a class="assistive" href="#ptx-content">Skip to main content</a><header id="ptx-masthead"><div class="ptx-banner">
+<a id="logo-link" href=""></a><div class="title-container">
+<h1 class="heading"><a href="my-great-book.html"><span class="title">Data Structures and Algorithms:</span> <span class="subtitle">BRIDGES</span></a></h1>
+<p class="byline">Sydney Melech</p>
+</div>
+<div id="searchresultsplaceholder" style="display: none">
+<button id="closesearchresults" onclick="document.getElementById('searchresultsplaceholder').style.display = 'none'; return false;">x</button><h2>Search Results: <span id="searchterms"></span>
+</h2>
+<div id="searchempty"><span>No results.</span></div>
+<ol id="searchresults"></ol>
+</div>
+</div></header><nav id="ptx-navbar" class="navbar"><button class="toc-toggle button" aria-label="Show or hide table of contents"><span class="icon">☰</span><span class="name">Contents</span></button><button id="user-preferences-button" class="user-preferences-button button" title="Modify user preferences"><span id="theavatarbutton" class="name">You!</span><div id="preferences_menu_holder" class="hidden"><ol id="preferences_menu" style="font-family: 'Roboto Serif', serif;">
+<li data-env="avatar" tabindex="-1">Choose avatar<div class="wrap_to_submenu"><span class="to_submenu">▻</span></div>
+<ol class="hidden avatar">
+<li data-val="You!" tabindex="-1">
+<span id="theYou!" class="avatarcheck">✔️</span>You!</li>
+<li data-val="😺" tabindex="-1">
+<span id="the😺" class="avatarcheck"></span>😺</li>
+<li data-val="👤" tabindex="-1">
+<span id="the👤" class="avatarcheck"></span>👤</li>
+<li data-val="👽" tabindex="-1">
+<span id="the👽" class="avatarcheck"></span>👽</li>
+<li data-val="🐶" tabindex="-1">
+<span id="the🐶" class="avatarcheck"></span>🐶</li>
+<li data-val="🐼" tabindex="-1">
+<span id="the🐼" class="avatarcheck"></span>🐼</li>
+<li data-val="🌈" tabindex="-1">
+<span id="the🌈" class="avatarcheck"></span>🌈</li>
+</ol>
+</li>
+<li data-env="fontfamily" tabindex="-1">Font family<div class="wrap_to_submenu"><span class="to_submenu">▻</span></div>
+<ol class="hidden fontfamily">
+<li data-val="face" data-change="OS" tabindex="-1" style="font-family: 'Open Sans'">
+<span id="theOS" class="ffcheck">✔️</span><span class="name">Open Sans</span><span class="sample">AaBbCc 123 PreTeXt</span>
+</li>
+<li data-val="face" data-change="RS" tabindex="-1" style="font-family: 'Roboto Serif'">
+<span id="theRS" class="ffcheck"></span><span class="name">Roboto Serif</span><span class="sample">AaBbCc 123 PreTeXt</span>
+</li>
+</ol>
+</li>
+<li data-env="font" tabindex="-1">Adjust font<div class="wrap_to_submenu"><span class="to_submenu">▻</span></div>
+<ol class="hidden fonts">
+<li>Size</li>
+<li><span id="thesize">12</span></li>
+<li data-val="size" data-change="-1" tabindex="-1" style="font-size: 80%">Smaller</li>
+<li data-val="size" data-change="1" tabindex="-1" style="font-size: 110%">Larger</li>
+<li>Width</li>
+<li><span id="thewdth">100</span></li>
+<li data-val="wdth" data-change="-5" tabindex="-1" style="font-variation-settings: 'wdth' 60">narrower</li>
+<li data-val="wdth" data-change="5" tabindex="-1" style="font-variation-settings: 'wdth' 150">wider</li>
+<li>Weight</li>
+<li><span id="thewght">400</span></li>
+<li data-val="wght" data-change="-50" tabindex="-1" style="font-weight: 200">thinner</li>
+<li data-val="wght" data-change="50" tabindex="-1" style="font-weight: 700">heavier</li>
+<li>Letter spacing</li>
+<li>
+<span id="thelspace">0</span><span class="byunits">/200</span>
+</li>
+<li data-val="lspace" data-change="-1" tabindex="-1">closer</li>
+<li data-val="lspace" data-change="1" tabindex="-1">f a r t h e r</li>
+<li>Word spacing</li>
+<li>
+<span id="thewspace">0</span><span class="byunits">/50</span>
+</li>
+<li data-val="wspace" data-change="-1" tabindex="-1">smaller gap </li>
+<li data-val="wspace" data-change="1" tabindex="-1">larger gap</li>
+<li>Line Spacing</li>
+<li>
+<span id="theheight">135</span><span class="byunits">/100</span>
+</li>
+<li data-val="height" data-change="-5" tabindex="-1" style="line-height: 1">closer<br>together</li>
+<li data-val="height" data-change="5" tabindex="-1" style="line-height: 1.75">further<br>apart</li>
+</ol>
+</li>
+<li data-env="atmosphere" tabindex="-1">Light/dark mode<div class="wrap_to_submenu"><span class="to_submenu">▻</span></div>
+<ol class="hidden atmosphere">
+<li data-val="default" tabindex="-1">
+<span id="thedefault" class="atmospherecheck">✔️</span>default</li>
+<li data-val="pastel" tabindex="-1">
+<span id="thepastel" class="atmospherecheck"></span>pastel</li>
+<li data-val="darktwilight" tabindex="-1">
+<span id="thedarktwilight" class="atmospherecheck"></span>twilight</li>
+<li data-val="dark" tabindex="-1">
+<span id="thedark" class="atmospherecheck"></span>dark</li>
+<li data-val="darkmidnight" tabindex="-1">
+<span id="thedarkmidnight" class="atmospherecheck"></span>midnight</li>
+</ol>
+</li>
+<li data-env="ruler" tabindex="-1">Reading ruler<div class="wrap_to_submenu"><span class="to_submenu">▻</span></div>
+<ol class="hidden ruler">
+<li data-val="none" tabindex="-1">
+<span id="thenone" class="rulercheck">✔️</span>none</li>
+<li data-val="underline" tabindex="-1">
+<span id="theunderline" class="rulercheck"></span>underline</li>
+<li data-val="lunderline" tabindex="-1">
+<span id="thelunderline" class="rulercheck"></span>L-underline</li>
+<li data-val="greybar" tabindex="-1">
+<span id="thegreybar" class="rulercheck"></span>grey bar</li>
+<li data-val="lightbox" tabindex="-1">
+<span id="thelightbox" class="rulercheck"></span>light box</li>
+<li data-val="sunrise" tabindex="-1">
+<span id="thesunrise" class="rulercheck"></span>sunrise</li>
+<li data-val="sunriseunderline" tabindex="-1">
+<span id="thesunriseunderline" class="rulercheck"></span>sunrise underline</li>
+<li class="moveQ">Motion by:</li>
+<li data-val="mouse" tabindex="-1">
+<span id="themouse" class="motioncheck">✔️</span>follow the mouse</li>
+<li data-val="arrow" tabindex="-1">
+<span id="thearrow" class="motioncheck"></span>up/down arrows - not yet</li>
+<li data-val="eye" tabindex="-1">
+<span id="theeye" class="motioncheck"></span>eye tracking - not yet</li>
+</ol>
+</li>
+</ol></div></button><span class="treebuttons"><a class="previous-button button" href="sec-ComparingRecords.html" title="Previous"><span class="icon">&lt;</span><span class="name">Prev</span></a><a class="up-button button" href="ch-SearchingSorting.html" title="Up"><span class="icon">^</span><span class="name">Up</span></a><a class="next-button button" href="sec-SelectionSort.html" title="Next"><span class="name">Next</span><span class="icon">&gt;</span></a></span><div class="searchbox"><div class="searchwidget">
+<input id="ptxsearch" type="text" name="terms" placeholder="Search" onchange="doSearch()"><button id="searchbutton" type="button" onclick="doSearch()">🔍</button>
+</div></div></nav><div id="latex-macros" class="hidden-content process-math" style="display:none"><span class="process-math">\(\newcommand{\R}{\mathbb R}
+\newcommand{\lt}{&lt;}
+\newcommand{\gt}{&gt;}
+\newcommand{\amp}{&amp;}
+\definecolor{fillinmathshade}{gray}{0.9}
+\newcommand{\fillinmath}[1]{\mathchoice{\colorbox{fillinmathshade}{$\displaystyle     \phantom{\,#1\,}$}}{\colorbox{fillinmathshade}{$\textstyle        \phantom{\,#1\,}$}}{\colorbox{fillinmathshade}{$\scriptstyle      \phantom{\,#1\,}$}}{\colorbox{fillinmathshade}{$\scriptscriptstyle\phantom{\,#1\,}$}}}
+\)</span></div>
+<div class="ptx-page">
+<div id="ptx-sidebar"><nav id="ptx-toc" class="depth2"><ul class="structural">
+<li><div class="toc-item"><a href="frontmatter.html" class="internal"><span class="title">Front Matter</span></a></div></li>
+<li>
+<div class="toc-item"><a href="chapter-Intro.html" class="internal"><span class="codenumber">1</span> <span class="title">Introduction</span></a></div>
+<ul class="structural">
+<li><div class="toc-item"><a href="section-Bridges.html" class="internal"><span class="codenumber">1.1</span> <span class="title">About BRIDGES</span></a></div></li>
+<li><div class="toc-item"><a href="sec-Setup.html" class="internal"><span class="codenumber">1.2</span> <span class="title">Setting up Bridges</span></a></div></li>
+<li><div class="toc-item"><a href="section-program.html" class="internal"><span class="codenumber">1.3</span> <span class="title">Hello World program</span></a></div></li>
+<li><div class="toc-item"><a href="sec-SmileyFace.html" class="internal"><span class="codenumber">1.4</span> <span class="title">Simple Smiley Face</span></a></div></li>
+</ul>
+</li>
+<li>
+<div class="toc-item"><a href="chapter-OOP.html" class="internal"><span class="codenumber">2</span> <span class="title">Object-oriented Programming</span></a></div>
+<ul class="structural">
+<li><div class="toc-item"><a href="section-ITOOP.html" class="internal"><span class="codenumber">2.1</span> <span class="title">Introduction to Object-oriented Programming</span></a></div></li>
+<li>
+<div class="toc-item"><a href="sec-POOOP.html" class="internal"><span class="codenumber">2.2</span> <span class="title">Principles of Object-oriented Programming</span></a></div>
+<ul class="structural">
+<li><div class="toc-item"><a href="sec-POOOP.html#subsec-Encap" class="internal"><span class="codenumber">2.2.1</span> <span class="title">Encapsulation</span></a></div></li>
+<li><div class="toc-item"><a href="sec-POOOP.html#subsec-Inherit" class="internal"><span class="codenumber">2.2.2</span> <span class="title">Inheritancr</span></a></div></li>
+<li><div class="toc-item"><a href="sec-POOOP.html#subsec-Poly" class="internal"><span class="codenumber">2.2.3</span> <span class="title">Polymorphism</span></a></div></li>
+<li><div class="toc-item"><a href="sec-POOOP.html#subsec-Abs" class="internal"><span class="codenumber">2.2.4</span> <span class="title">Abstraction</span></a></div></li>
+</ul>
+</li>
+<li><div class="toc-item"><a href="sec-UML.html" class="internal"><span class="codenumber">2.3</span> <span class="title">The Unified Modeling Language</span></a></div></li>
+<li><div class="toc-item"><a href="sec-Testing.html" class="internal"><span class="codenumber">2.4</span> <span class="title">Testing vs Debugging</span></a></div></li>
+<li>
+<div class="toc-item"><a href="sec-UnitTest.html" class="internal"><span class="codenumber">2.5</span> <span class="title">Unit Testing</span></a></div>
+<ul class="structural">
+<li><div class="toc-item"><a href="sec-UnitTest.html#subsec-WhyUnitTest" class="internal"><span class="codenumber">2.5.1</span> <span class="title">Why do we need unit testing?</span></a></div></li>
+<li><div class="toc-item"><a href="sec-UnitTest.html#subsec-WhatUnitTest" class="internal"><span class="codenumber">2.5.2</span> <span class="title">What is Unit Testing?</span></a></div></li>
+<li><div class="toc-item"><a href="sec-UnitTest.html#subsec-JUnit" class="internal"><span class="codenumber">2.5.3</span> <span class="title">What is JUnit?</span></a></div></li>
+</ul>
+</li>
+<li><div class="toc-item"><a href="sec-JUintExample.html" class="internal"><span class="codenumber">2.6</span> <span class="title">JUint Example</span></a></div></li>
+<li><div class="toc-item"><a href="sec-GameTutorial.html" class="internal"><span class="codenumber">2.7</span> <span class="title">Bridges Game API Tutorial</span></a></div></li>
+</ul>
+</li>
+<li>
+<div class="toc-item"><a href="ch-DataStruct.html" class="internal"><span class="codenumber">3</span> <span class="title">Introduction to Data Structures and Algorithms</span></a></div>
+<ul class="structural">
+<li>
+<div class="toc-item"><a href="sec-DSAlgor.html" class="internal"><span class="codenumber">3.1</span> <span class="title">Data Structures and Algorithms</span></a></div>
+<ul class="structural">
+<li><div class="toc-item"><a href="sec-DSAlgor.html#subsec-IntroDSA" class="internal"><span class="codenumber">3.1.1</span> <span class="title">Introduction</span></a></div></li>
+<li><div class="toc-item"><a href="sec-DSAlgor.html#subsec-PhilofDS" class="internal"><span class="codenumber">3.1.2</span> <span class="title">Philosophy of Data Structures</span></a></div></li>
+<li><div class="toc-item"><a href="sec-DSAlgor.html#subsec-SelectDS" class="internal"><span class="codenumber">3.1.3</span> <span class="title">Selecting a Data Structure</span></a></div></li>
+</ul>
+</li>
+<li>
+<div class="toc-item"><a href="sec-AbstractDT.html" class="internal"><span class="codenumber">3.2</span> <span class="title">Abstract Data Types</span></a></div>
+<ul class="structural"><li><div class="toc-item"><a href="sec-AbstractDT.html#subsec-DataTypes" class="internal"><span class="codenumber">3.2.1</span> <span class="title">Abstract Data Types</span></a></div></li></ul>
+</li>
+<li>
+<div class="toc-item"><a href="sec-ADTGenerics.html" class="internal"><span class="codenumber">3.3</span> <span class="title">Abstract Data Types and Generics</span></a></div>
+<ul class="structural">
+<li><div class="toc-item"><a href="sec-ADTGenerics.html#subsec-Algorithms" class="internal"><span class="codenumber">3.3.1</span> <span class="title">Algorithms</span></a></div></li>
+<li><div class="toc-item"><a href="sec-ADTGenerics.html#subsec-GuidelineofDSSel" class="internal"><span class="codenumber">3.3.2</span> <span class="title">Guideline of Data Structure Selection</span></a></div></li>
+</ul>
+</li>
+<li><div class="toc-item"><a href="sec-PatternTutorial.html" class="internal"><span class="codenumber">3.4</span> <span class="title">Pattern Tutorial</span></a></div></li>
+</ul>
+</li>
+<li>
+<div class="toc-item"><a href="ch-AlgorithmAnalysis.html" class="internal"><span class="codenumber">4</span> <span class="title">Algorithm Analysis</span></a></div>
+<ul class="structural">
+<li>
+<div class="toc-item"><a href="sec-PAP.html" class="internal"><span class="codenumber">4.1</span> <span class="title">Problems, Algorithms, and Programs</span></a></div>
+<ul class="structural">
+<li><div class="toc-item"><a href="sec-PAP.html#subsec-Problems" class="internal"><span class="codenumber">4.1.1</span> <span class="title">Problems</span></a></div></li>
+<li><div class="toc-item"><a href="sec-PAP.html#subsec-Algorithms2" class="internal"><span class="codenumber">4.1.2</span> <span class="title">Algorithms</span></a></div></li>
+<li><div class="toc-item"><a href="sec-PAP.html#subsec-Programs" class="internal"><span class="codenumber">4.1.3</span> <span class="title">Programs</span></a></div></li>
+</ul>
+</li>
+<li><div class="toc-item"><a href="sec-BWAvgCases.html" class="internal"><span class="codenumber">4.2</span> <span class="title">Best, Worst, and Average Cases</span></a></div></li>
+<li><div class="toc-item"><a href="sec-ComputerorAlgorithm.html" class="internal"><span class="codenumber">4.3</span> <span class="title">Faster Computer, or Faster Algorithm</span></a></div></li>
+<li><div class="toc-item"><a href="sec-AALecture.html" class="internal"><span class="codenumber">4.4</span> <span class="title">Algorithm Analysis Lecture</span></a></div></li>
+<li><div class="toc-item"><a href="sec-ComplexityMatters.html" class="internal"><span class="codenumber">4.5</span> <span class="title">Complexity Matters</span></a></div></li>
+</ul>
+</li>
+<li>
+<div class="toc-item"><a href="ch-LNandLL.html" class="internal"><span class="codenumber">5</span> <span class="title">Linked Nodes and Linked Lists</span></a></div>
+<ul class="structural">
+<li>
+<div class="toc-item"><a href="sec-Pointers.html" class="internal"><span class="codenumber">5.1</span> <span class="title">Pointers Syntax</span></a></div>
+<ul class="structural">
+<li><div class="toc-item"><a href="sec-Pointers.html#subsec-Syntax" class="internal"><span class="codenumber">5.1.1</span> <span class="title">Syntax</span></a></div></li>
+<li><div class="toc-item"><a href="sec-Pointers.html#subsec-DecRV" class="internal"><span class="codenumber">5.1.2</span> <span class="title">Declaring a Reference Variable</span></a></div></li>
+<li><div class="toc-item"><a href="sec-Pointers.html#subsec-RRSum" class="internal"><span class="codenumber">5.1.3</span> <span class="title">Reference Rules</span></a></div></li>
+<li><div class="toc-item"><a href="sec-Pointers.html#subsec-JRVsP" class="internal"><span class="codenumber">5.1.4</span> <span class="title">Java Reference Vs Pointers</span></a></div></li>
+</ul>
+</li>
+<li><div class="toc-item"><a href="sec-LinkedNodes.html" class="internal"><span class="codenumber">5.2</span> <span class="title">Linked Nodes</span></a></div></li>
+<li><div class="toc-item"><a href="sec-DoubleLL.html" class="internal"><span class="codenumber">5.3</span> <span class="title">Doubly Linked Lists</span></a></div></li>
+<li><div class="toc-item"><a href="sec-LLLecture.html" class="internal"><span class="codenumber">5.4</span> <span class="title">Linked List Lecture</span></a></div></li>
+<li><div class="toc-item"><a href="sec-LLTutorial.html" class="internal"><span class="codenumber">5.5</span> <span class="title">Linked List Tutorial</span></a></div></li>
+<li>
+<div class="toc-item"><a href="sec-Exercises.html" class="internal"><span class="codenumber">5.6</span> <span class="title">Exercises</span></a></div>
+<ul class="structural">
+<li><div class="toc-item"><a href="sec-Exercises.html#subsec-LLVsALfirst" class="internal"><span class="codenumber">5.6.1</span> <span class="title">Linked Lists Vs Array Lists Exercise 1</span></a></div></li>
+<li><div class="toc-item"><a href="sec-Exercises.html#subsec-LLVsALSec" class="internal"><span class="codenumber">5.6.2</span> <span class="title">Linked Lists Vs Array Lists Exercise 2</span></a></div></li>
+</ul>
+</li>
+</ul>
+</li>
+<li>
+<div class="toc-item"><a href="ch-Stacks.html" class="internal"><span class="codenumber">6</span> <span class="title">Stacks</span></a></div>
+<ul class="structural">
+<li><div class="toc-item"><a href="sec-StackTerm.html" class="internal"><span class="codenumber">6.1</span> <span class="title">Stack Terminology and Implementation</span></a></div></li>
+<li><div class="toc-item"><a href="sec-LinkedStacks.html" class="internal"><span class="codenumber">6.2</span> <span class="title">Linked Stacks</span></a></div></li>
+<li><div class="toc-item"><a href="sec-StacksLecture.html" class="internal"><span class="codenumber">6.3</span> <span class="title">Stacks and Queues Lecture</span></a></div></li>
+</ul>
+</li>
+<li>
+<div class="toc-item"><a href="ch-Queues.html" class="internal"><span class="codenumber">7</span> <span class="title">Queues</span></a></div>
+<ul class="structural">
+<li><div class="toc-item"><a href="sec-QueueTerm.html" class="internal"><span class="codenumber">7.1</span> <span class="title">Queue Terminology</span></a></div></li>
+<li><div class="toc-item"><a href="sec-ArrayvsQueues.html" class="internal"><span class="codenumber">7.2</span> <span class="title">Array-Based vs Linked Queues</span></a></div></li>
+<li>
+<div class="toc-item"><a href="sec-QueuesTutorial.html" class="internal"><span class="codenumber">7.3</span> <span class="title">Snake with Queues Tutorial</span></a></div>
+<ul class="structural">
+<li><div class="toc-item"><a href="sec-QueuesTutorial.html#subsec-Goals" class="internal"><span class="codenumber">7.3.1</span> <span class="title">Goals</span></a></div></li>
+<li><div class="toc-item"><a href="sec-QueuesTutorial.html#subsec-Programming" class="internal"><span class="codenumber">7.3.2</span> <span class="title">Programming Tasks</span></a></div></li>
+<li><div class="toc-item"><a href="sec-QueuesTutorial.html#subsec-Start" class="internal"><span class="codenumber">7.3.3</span> <span class="title">Getting Started</span></a></div></li>
+<li><div class="toc-item"><a href="sec-QueuesTutorial.html#subsec-Visual" class="internal"><span class="codenumber">7.3.4</span> <span class="title">Visualizing the Program</span></a></div></li>
+</ul>
+</li>
+</ul>
+</li>
+<li>
+<div class="toc-item"><a href="ch-SearchingSorting.html" class="internal"><span class="codenumber">8</span> <span class="title">Searching and Sorting</span></a></div>
+<ul class="structural">
+<li><div class="toc-item"><a href="sec-IntroSort.html" class="internal"><span class="codenumber">8.1</span> <span class="title">Introduction to Sorting</span></a></div></li>
+<li><div class="toc-item"><a href="sec-SortingTerm.html" class="internal"><span class="codenumber">8.2</span> <span class="title">Sorting Terminology</span></a></div></li>
+<li><div class="toc-item"><a href="sec-ComparingRecords.html" class="internal"><span class="codenumber">8.3</span> <span class="title">Comparing Records</span></a></div></li>
+<li class="active"><div class="toc-item"><a href="sec-InsertionSort.html" class="internal"><span class="codenumber">8.4</span> <span class="title">Insertion Sort</span></a></div></li>
+<li><div class="toc-item"><a href="sec-SelectionSort.html" class="internal"><span class="codenumber">8.5</span> <span class="title">Selection Sort</span></a></div></li>
+<li><div class="toc-item"><a href="sec-SearchSortLecture.html" class="internal"><span class="codenumber">8.6</span> <span class="title">Searching and Sorting Algorithm Lecture</span></a></div></li>
+<li><div class="toc-item"><a href="sec-BinarySearchLab.html" class="internal"><span class="codenumber">8.7</span> <span class="title">Binary Search Lab 1</span></a></div></li>
+<li>
+<div class="toc-item"><a href="sec-BinaryLab.html" class="internal"><span class="codenumber">8.8</span> <span class="title">Binary Search Lab 2</span></a></div>
+<ul class="structural">
+<li><div class="toc-item"><a href="sec-BinaryLab.html#subsec-GoalsLab" class="internal"><span class="codenumber">8.8.1</span> <span class="title">Goals</span></a></div></li>
+<li><div class="toc-item"><a href="sec-BinaryLab.html#subsec-SortTasks" class="internal"><span class="codenumber">8.8.2</span> <span class="title">Tasks</span></a></div></li>
+</ul>
+</li>
+<li>
+<div class="toc-item"><a href="sec-SortingBenchmark.html" class="internal"><span class="codenumber">8.9</span> <span class="title">Sorting Benchmark</span></a></div>
+<ul class="structural">
+<li><div class="toc-item"><a href="sec-SortingBenchmark.html#subsec-GoalsBench" class="internal"><span class="codenumber">8.9.1</span> <span class="title">Goals</span></a></div></li>
+<li><div class="toc-item"><a href="sec-SortingBenchmark.html#subsec-TasksBench" class="internal"><span class="codenumber">8.9.2</span> <span class="title">Tasks</span></a></div></li>
+</ul>
+</li>
+</ul>
+</li>
+<li>
+<div class="toc-item"><a href="ch-Recursion.html" class="internal"><span class="codenumber">9</span> <span class="title">Recursion</span></a></div>
+<ul class="structural">
+<li><div class="toc-item"><a href="sec-RecIntro.html" class="internal"><span class="codenumber">9.1</span> <span class="title">Introduction to Recursion</span></a></div></li>
+<li><div class="toc-item"><a href="sec-RecurCode.html" class="internal"><span class="codenumber">9.2</span> <span class="title">Tracing Recursive Code</span></a></div></li>
+<li><div class="toc-item"><a href="sec-RecursionLecture.html" class="internal"><span class="codenumber">9.3</span> <span class="title">Recursion Lecture</span></a></div></li>
+<li>
+<div class="toc-item"><a href="sec-QSAPractice.html" class="internal"><span class="codenumber">9.4</span> <span class="title">Quicksort Algorithm Practice</span></a></div>
+<ul class="structural">
+<li><div class="toc-item"><a href="sec-QSAPractice.html#subsec-QSGoals" class="internal"><span class="codenumber">9.4.1</span> <span class="title">Goals</span></a></div></li>
+<li><div class="toc-item"><a href="sec-QSAPractice.html#subsec-QSTasks" class="internal"><span class="codenumber">9.4.2</span> <span class="title">Tasks</span></a></div></li>
+</ul>
+</li>
+</ul>
+</li>
+<li>
+<div class="toc-item"><a href="ch-BinaryTrees.html" class="internal"><span class="codenumber">10</span> <span class="title">Binary Trees</span></a></div>
+<ul class="structural">
+<li><div class="toc-item"><a href="sec-BinaryIntro.html" class="internal"><span class="codenumber">10.1</span> <span class="title">Binary Trees Introduction</span></a></div></li>
+<li><div class="toc-item"><a href="sec-BTDef.html" class="internal"><span class="codenumber">10.2</span> <span class="title">Binary Trees Definitions and Properties</span></a></div></li>
+<li>
+<div class="toc-item"><a href="sec-BTTraversals.html" class="internal"><span class="codenumber">10.3</span> <span class="title">Binary Tress Traversals</span></a></div>
+<ul class="structural">
+<li><div class="toc-item"><a href="sec-BTTraversals.html#subsec-BTTrav" class="internal"><span class="codenumber">10.3.1</span> <span class="title">Binary Tress Traversals</span></a></div></li>
+<li><div class="toc-item"><a href="sec-BTTraversals.html#subsec-PreorderTraversal" class="internal"><span class="codenumber">10.3.2</span> <span class="title">Preorder Traversal</span></a></div></li>
+<li><div class="toc-item"><a href="sec-BTTraversals.html#subsec-PostorderTraversal" class="internal"><span class="codenumber">10.3.3</span> <span class="title">Postorder Traversal</span></a></div></li>
+<li><div class="toc-item"><a href="sec-BTTraversals.html#subsec-InorderTraversal" class="internal"><span class="codenumber">10.3.4</span> <span class="title">Inorder Traversal</span></a></div></li>
+<li><div class="toc-item"><a href="sec-BTTraversals.html#subsec-Implementation" class="internal"><span class="codenumber">10.3.5</span> <span class="title">Implementation</span></a></div></li>
+</ul>
+</li>
+<li><div class="toc-item"><a href="sec-BinarySearchTrees.html" class="internal"><span class="codenumber">10.4</span> <span class="title">Binary Search Trees</span></a></div></li>
+<li><div class="toc-item"><a href="sec-BTLecture.html" class="internal"><span class="codenumber">10.5</span> <span class="title">Binary Trees Lecture</span></a></div></li>
+<li>
+<div class="toc-item"><a href="sec-BSTExercise.html" class="internal"><span class="codenumber">10.6</span> <span class="title">Binary Search Tree Exercise</span></a></div>
+<ul class="structural">
+<li><div class="toc-item"><a href="sec-BSTExercise.html#subsec-BSTGoals" class="internal"><span class="codenumber">10.6.1</span> <span class="title">Goals</span></a></div></li>
+<li><div class="toc-item"><a href="sec-BSTExercise.html#subsec-BSTProgTasks" class="internal"><span class="codenumber">10.6.2</span> <span class="title">Programming Tasks</span></a></div></li>
+<li><div class="toc-item"><a href="sec-BSTExercise.html#subsec-BuildingBST" class="internal"><span class="codenumber">10.6.3</span> <span class="title">Building The BST</span></a></div></li>
+</ul>
+</li>
+</ul>
+</li>
+<li><div class="toc-item"><a href="backmatter.html" class="internal"><span class="title">Backmatter</span></a></div></li>
+</ul></nav></div>
+<main class="ptx-main"><div id="ptx-content" class="ptx-content"><section class="section" id="sec-InsertionSort"><h2 class="heading hide-type">
+<span class="type">Section</span> <span class="codenumber">8.4</span> <span class="title">Insertion Sort</span>
+</h2>
+<div class="para" id="p-192">Imagine you have a stack of phone bills from the past two years, and you want to arrange them in order by date. A natural way to tackle this task is to start with the first two bills and put them in the correct order. Then, take the third bill and place it in its proper position relative to the first two bills. You continue this process, taking each bill and adding it to the already sorted pile. This simple approach serves as the foundation for our first sorting algorithm, known as Insertion Sort.</div>
+<div class="para" id="p-193">Insertion Sort works by iterating through the list of records. During each iteration, the current record is inserted at the appropriate position within a sorted list consisting of the records already processed.</div>
+<div class="para" id="p-194">Although the best case for Insertion Sort is considerably faster than the average and worst cases, the average and worst cases provide more reliable estimates of the typical running time. However, there are scenarios where we can anticipate the input to be already sorted or nearly sorted. In such cases, Insertion Sort can be a suitable choice, especially when the disordering is minor. Even when the input is not perfectly sorted, Insertion Sort's performance is proportional to the number of inversions, making it efficient for "nearly sorted" lists. Shellsort and Quicksort are examples of algorithms that leverage Insertion Sort's near-best-case running time.</div>
+<div class="para" id="p-195">When counting comparisons or swaps, similar trends emerge. Each iteration of the inner for loop involves both a comparison and a swap, except for the last comparison that fails the loop's test and does not require a swap. Consequently, the number of swaps in the entire sorting operation is n-1 less than the number of comparisons. The best case has zero swaps, while the average and worst cases exhibit a Θ(n^2) complexity.</div>
+<div class="para" id="p-196">As we delve into algorithms with superior growth rates, Insertion Sort becomes less favorable for larger arrays. It is not the most efficient sorting algorithm for most situations. However, there are specific scenarios where it excels, such as when the input is already sorted or when working with very small arrays. Other algorithms with better asymptotic growth rates tend to be more complex, leading to larger constant factors in their running time. While they require fewer comparisons for larger arrays, their cost per comparison is higher. Although this observation may seem less beneficial, there are instances where numerous sorting operations are performed on very small arrays.</div></section></div>
+<div class="ptx-content-footer">
+<a class="previous-button button" href="sec-ComparingRecords.html" title="Previous"><span class="icon">&lt;</span><span class="name">Prev</span></a><a class="top-button button" href="#" title="Top"><span class="icon">^</span><span class="name">Top</span></a><a class="next-button button" href="sec-SelectionSort.html" title="Next"><span class="name">Next</span><span class="icon">&gt;</span></a>
+</div></main>
+</div>
+<div id="ptx-page-footer">
+<a class="pretext-link" href="https://pretextbook.org" title="PreTeXt"><div class="logo"><svg xmlns="http://www.w3.org/2000/svg" width="100%" height="100%" viewBox="338 3000 8772 6866"><g style="stroke-width:.025in; stroke:black; fill:none"><polyline points="472,3590 472,9732 " style="stroke:#000000;stroke-width:174; stroke-linejoin:miter; stroke-linecap:round; "></polyline><path style="stroke:#000000;stroke-width:126;stroke-linecap:butt;" d="M 4724,9448 A 4660 4660  0  0  1  8598  9259"></path><path style="stroke:#000000;stroke-width:174;stroke-linecap:butt;" d="M 4488,9685 A 4228 4228  0  0  0   472  9732"></path><path style="stroke:#000000;stroke-width:126;stroke-linecap:butt;" d="M 4724,3590 A 4241 4241  0  0  1  8598  3496"></path><path style="stroke:#000000;stroke-width:126;stroke-linecap:round;" d="M 850,3496  A 4241 4241  0  0  1  4724  3590"></path><path style="stroke:#000000;stroke-width:126;stroke-linecap:round;" d="M 850,9259  A 4507 4507  0  0  1  4724  9448"></path><polyline points="5385,4299 4062,8125" style="stroke:#000000;stroke-width:300; stroke-linejoin:miter; stroke-linecap:round;"></polyline><polyline points="8598,3496 8598,9259" style="stroke:#000000;stroke-width:126; stroke-linejoin:miter; stroke-linecap:round;"></polyline><polyline points="850,3496 850,9259" style="stroke:#000000;stroke-width:126; stroke-linejoin:miter; stroke-linecap:round;"></polyline><polyline points="4960,9685 4488,9685" style="stroke:#000000;stroke-width:174; stroke-linejoin:miter; stroke-linecap:round;"></polyline><polyline points="3070,4582 1889,6141 3070,7700" style="stroke:#000000;stroke-width:300; stroke-linejoin:miter; stroke-linecap:round;"></polyline><polyline points="6418,4582 7600,6141 6418,7700" style="stroke:#000000;stroke-width:300; stroke-linejoin:miter; stroke-linecap:round;"></polyline><polyline points="8976,3590 8976,9732" style="stroke:#000000;stroke-width:174; stroke-linejoin:miter; stroke-linecap:round;"></polyline><path style="stroke:#000000;stroke-width:174;stroke-linecap:butt;" d="M 4960,9685 A 4228 4228  0  0  1  8976  9732"></path></g></svg></div></a><a class="runestone-link" href="https://runestone.academy" title="Runestone Academy"><img class="logo" src="https://runestone.academy/runestone/static/images/RAIcon_cropped.png"></a><a class="mathjax-link" href="https://www.mathjax.org" title="MathJax"><img class="logo" src="https://www.mathjax.org/badge/badge-square-2.png"></a>
+</div>
+</body>
+</html>
