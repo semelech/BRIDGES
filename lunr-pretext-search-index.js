@@ -478,6 +478,96 @@ var ptx_lunr_docs = [
   "body": " Binary Search Tree Exercise   Goals  The purpose of this assignment is to learn to    Access remote data through BRIDGES.    Manipulate a binary search tree using the earthquake magnitude (or some other attribute) as a search key    Traverse BST using different methods.      Programming Tasks  Starting file: BST_eq.java   Build a binary search tree where each node represents an earthquake record  Steps:    Open your base code.    Plug in your credentials.    Complete the insert_R() function to recursively insert objects into the binary search tree. You should insert objects based on the magnitude of the earthquake.    Perform a traversal on the completed BST.    Perform a binary search to find the biggest earthquake based on magnitude and color it red.      Building The BST    Your BSTElement will use EarthquakeUSGS as the generic parameter, using Double as the key type. The key is will be the magnitude of the earthquake.    Write an insert() method, creating and inserting earthquake records into a binary search tree, using the magnitude of the quake as a search key. Color the nodes less than 3.0 magnitude orange and the nodes greater than or equal to 3.0 magnitude green (10 points)    Color the root node in a unique color. (done for you)    Perform a traversal of the tree and color leaf nodes black. (10 points)    Traverse the tree to find the largest quake and style it RED. (5 points)    Once completed, submit your code and link to the visualization. (2 points)     "
 },
 {
+  "id": "sec-HashIntro",
+  "level": "1",
+  "url": "sec-HashIntro.html",
+  "type": "Section",
+  "number": "11.1",
+  "title": "Introduction",
+  "body": " Introduction  Hashing is a method used to store and retrieve records in a database based on a search key value. It enables operations like insertion, deletion, and searching, which can be performed in constant time when properly implemented. A well-tuned hash system typically examines only one or two records for each search, insert, or delete operation, outperforming other methods like binary search on a sorted array or a binary search tree with O(logn) average costs. Despite its simple concept, proper implementation of hashing can be challenging, requiring designers to pay close attention to all the details involved.  In a hash system, records are stored in an array known as a hash table (HT). Hashing involves computing a hash function (denoted as h) on a search key K to identify the position in HT where the record with key K should be placed. As records are stored based on the address calculation, they are not ordered by value. Each position in the hash table is referred to as a slot, with the number of slots denoted by M, starting from 0 to M-1.  The primary goal of a hashing system is to ensure that for any key value K and hash function h, the resulting position i=h(K) in the table is such that 0≤i Less than M, and the key of the record stored at HT[i] is equal to K.  However, hashing may not be suitable for applications that permit multiple records with the same key value or when answering range searches. It cannot easily find all records within a specific range or determine the minimum or maximum key value or visit records in key order. Yet, hashing excels at answering exact-match queries, making it the preferred search method for such applications when implemented correctly. Despite its efficiency, there are various approaches to hashing, and inefficient implementations can be devised. Hashing is suitable for both in-memory and disk-based searching and is one of the most widely used methods for organizing large databases stored on disk, alongside the B-tree.  "
+},
+{
+  "id": "sec-OpenHashing",
+  "level": "1",
+  "url": "sec-OpenHashing.html",
+  "type": "Section",
+  "number": "11.2",
+  "title": "Open Hashing",
+  "body": " Open Hashing  Hash functions aim to minimize collisions, but in practice, some collisions are inevitable. Thus, collision resolution policies are essential in hashing implementations. There are two primary classes of collision resolution techniques: open hashing (or separate chaining) and closed hashing (or open addressing). Despite the confusing naming convention, open hashing involves storing collisions outside the table, while closed hashing stores one of the records in another slot within the table.  In the simplest form of open hashing, each slot in the hash table is the head of a linked list. All records that hash to a particular slot are placed in that slot's linked list. This creates a structure where each slot points to a linked list that holds the records associated with that specific slot. The hash function used in this case is the straightforward mod function. The following figure illustrates a hash table employing open hashing and the mod function for hash calculations.  Open hashing is well-suited for scenarios where the hash table is stored in main memory, and the lists are implemented using standard in-memory linked lists. However, using open hashing to store a hash table on disk efficiently poses challenges. Since members of a linked list may be stored in different disk blocks, searching for a specific key value would require multiple disk accesses, undermining the purpose of hashing.  Open hashing shares some similarities with Binsort. In open hashing, each record is placed in a bin, even though multiple records may hash to the same bin. This initial binning significantly reduces the number of records accessed during a search operation. Similarly, a simple Binsort organizes records into bins, reducing the number of records in each bin to a small manageable number that can be sorted using a different approach.  "
+},
+{
+  "id": "sec-BucketHash",
+  "level": "1",
+  "url": "sec-BucketHash.html",
+  "type": "Section",
+  "number": "11.3",
+  "title": "Bucket Hashing",
+  "body": " Bucket Hashing  Closed hashing stores all records directly in the hash table. Each record with a key value kR has a home position at h(kR), which is computed by the hash function. If the home position is occupied during insertion, the record is stored in another slot within the table, and the collision resolution policy determines which slot that will be. This policy is also followed during search to retrieve any record not found in its home position, repeating the collision resolution process.  One implementation of closed hashing involves grouping hash table slots into buckets. The M slots of the hash table are divided into B buckets, each containing M\/B slots. Records are assigned to the first available slot within a bucket based on the hash function. If a slot is already taken, the bucket slots are searched sequentially until an open slot is found. If a bucket becomes full, records are stored in an overflow bucket with infinite capacity located at the end of the table. All buckets share the same overflow bucket. A well-designed implementation uses a hash function that evenly distributes records among the buckets to minimize the use of the overflow bucket.  During a search for a record, the key is hashed to determine the bucket that should contain the record. The records in this bucket are then searched. If the desired key value is not found and the bucket still has free slots, the search is complete. However, if the bucket is full, it is possible that the desired record is stored in the overflow bucket.  "
+},
+{
+  "id": "sec-CollisionRes",
+  "level": "1",
+  "url": "sec-CollisionRes.html",
+  "type": "Section",
+  "number": "11.4",
+  "title": "Collision Resolution",
+  "body": " Collision Resolution  Now, let's focus on the most commonly used form of hashing: closed hashing without bucketing, which employs a collision resolution policy that can potentially use any slot in the hash table. When inserting a record, collision resolution aims to find a free slot in the hash table if the record's home position is already taken. We can think of collision resolution methods as generating a sequence of hash table slots that may accommodate the record. The first slot in the sequence is the home position for the key. If it's occupied, the collision resolution policy moves to the next slot in the sequence. If that slot is also taken, it searches for another, and so on. This sequence of slots is called the probe sequence, generated by a probe function we'll call p.  "
+},
+{
+  "id": "sec-HashLecture",
+  "level": "1",
+  "url": "sec-HashLecture.html",
+  "type": "Section",
+  "number": "11.5",
+  "title": "Hash Tables and Hash Maps Lecture",
+  "body": " Hash Tables and Hash Maps Lecture  Here is a link to download the lecture on Hash Tables and Hash Maps: Slides   "
+},
+{
+  "id": "sec-HashMapLab",
+  "level": "1",
+  "url": "sec-HashMapLab.html",
+  "type": "Section",
+  "number": "11.6",
+  "title": "HashMap Lab",
+  "body": " HashMap Lab   Counting word appearances using a Dictionary and a custom implementation  A Dictionary (sometimes called associative arrays) enable to store and retrieve (key, value) pairs. In this assignment, they will be useful to count how many times a particular word appears in Shakespeare's work. The keys are going to be words. And the value associated with that key is going to be how many times that word appears. You will be building the hashmap yourself given the scaffolded code. The only file you will need to edit is the HashTabel.java file.    Getting Started    Get your IDE ready for a BRIDGES project and download the scaffold code: hashassignment.zip     Open up the HashTable.java file.    Complete all the todo functions    Plug in your credentials in PQBook.java.    Run the program to see the visual of the hashtable      Tasks to Complete    Complete the get() function in HashTable.java | 10 pts    Complete the set() function in HashTable.java | 10pts    Complete the delete() function in HashTable.java | 10pts    Complete the resize() function in HashTable.java | 10pts      Functionality Information  The hashtable uses chaining for collisions so each index in the hashtable will hold a linked list of nodes. Each Node is an object that holds the key, value, and next position in the linked list.  The get() function is used to get a value from the hashtable using the key passed in as a parameter. You will get the index into the hashtable from the hash function and loop over the list at that index to get the object.  The set() function is used to set an object with the given key to a given value. If an object with the key is in the hashmap, you can set the object's value. If not, add a new object with the key-value pair.  The delete() function removes an object from the hashtable given the key.  The resize() function resizes the hashtable once a loadFactor has been reached. This condition is calculated for you in the set() function. Once you set a new object in the hashtable, it checks if that loadFactor is reached. This relies on the count variable being accurate so update the count variable every time a new objects is added. If so, resize is called. In the resize function, you can interate over the hashtable by doing: for(Node node : this.table). This will get the first node at each index in the hashtable.   "
+},
+{
+  "id": "sec-GraphsIntro",
+  "level": "1",
+  "url": "sec-GraphsIntro.html",
+  "type": "Section",
+  "number": "12.1",
+  "title": "Graphs Chapter Introduction",
+  "body": " Graphs Chapter Introduction  Graphs offer unparalleled versatility as a data structure. They consist of nodes and edges, where edges connect pairs of nodes. Notably, both trees and lists can be considered as specific cases of graphs.  Graphs find extensive use in modeling real-world systems and abstract problems, making them a preferred data structure in numerous applications. Below are some examples of the diverse problems for which graphs are routinely employed:    Representing connectivity in computer and communication networks.    Abstractly mapping locations and distances, useful for calculating shortest routes in GPS navigation.    Modeling flow capacities in transportation networks to identify bottlenecks.    Solving pathfinding problems from a starting condition to a goal condition, commonly in AI and gaming applications.    Depicting computer algorithms, showcasing transitions between program states.    Determining an optimal order for completing subtasks in complex activities, like constructing large buildings.    Modeling relationships, such as family trees, organizational structures, and scientific classifications.    "
+},
+{
+  "id": "sec-GraphTrav",
+  "level": "1",
+  "url": "sec-GraphTrav.html",
+  "type": "Section",
+  "number": "12.2",
+  "title": "Graph Traversals",
+  "body": " Graph Traversals  Graph traversal, similar to tree traversal, involves visiting vertices in a specific order based on the graph's topology. Just as tree traversals have various orders like preorder, inorder, and postorder, graph traversals also have different orders, each suited for specific applications. For example, in artificial intelligence programming, graph traversal is crucial to solving problems involving a collection of states connected by edges.  Graph traversal algorithms start from a designated start vertex and aim to visit all remaining vertices. These algorithms face challenges, such as dealing with disconnected graphs where not all vertices are reachable from the start vertex, or handling cycles without getting stuck in infinite loops.  To address these issues, graph traversal algorithms utilize a \"VISITED\" flag to keep track of visited vertices. At the beginning of the traversal, no vertices have the \"VISITED\" flag set. As the algorithm visits a vertex, it marks it as \"VISITED\" to avoid revisiting it. This mechanism prevents infinite loops when encountering cycles.  Once the traversal completes, we can check if all vertices have the \"VISITED\" flag set to ensure that all vertices have been processed. If some vertices remain unflagged, we can continue the traversal from another unvisited vertex. Remarkably, this process applies to both directed and undirected graphs.  "
+},
+{
+  "id": "sec-GraphsLeture",
+  "level": "1",
+  "url": "sec-GraphsLeture.html",
+  "type": "Section",
+  "number": "12.3",
+  "title": "Graphs Leture",
+  "body": " Graphs Leture  Here is a link to download the lecture on graphs: Slides   "
+},
+{
+  "id": "sec-EarthquakeAssignment",
+  "level": "1",
+  "url": "sec-EarthquakeAssignment.html",
+  "type": "Section",
+  "number": "12.4",
+  "title": "Earthquake Tracker Assignment",
+  "body": " Earthquake Tracker Assignment   Goals  The purpose of this assignment is to learn to    Access and manipulate remote data through BRIDGES.    Manipulate a GraphAdjList object.    Display a location on a map.    Optionally, perform basic graph operation (connected component)    Please download: Earthquake.zip     Programming Tasks  Grab recent earthquake data and build a graph representing the locations of the 100 strongest earthquakes.    Open your scaffolded code.    Plug in your credentials.    Get the most recent 10,000 earthquakes.    Only retain the 100 highest magnitude earthquakes.      Place Earthquakes on the map    Create a graph where each earthquake is a vertex.    Add no edges for now.    Pin earthquakes at their longitude and latitude.    Tweak the appearance of vertices if you want (e.g., use a different symbols for earthquake in Hawaii or Alaska).    Compile, run, and visualize.      Build a graph based on distances  For each pair of earthquakes:    Compute the distance using calcDistance.    If the earthquakes are closer than 500km, add an edge between them.    Compile, run, and visualize.    Show just the graph    Deactivate the map overlay (already done in the scaffolding).    Unpin the vertices by setting their location to infinity.    Compile, run, and visualize.     "
+},
+{
   "id": "colophon-2",
   "level": "1",
   "url": "colophon-2.html",
