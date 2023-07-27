@@ -2166,6 +2166,481 @@
       
     </chapter>
 
+    <chapter xml:id="ch-Hashing">
+      <title>Hashing</title>
+
+      <section xml:id="sec-HashIntro">
+        <title>Introduction</title>
+
+        <p>
+          Hashing is a method used to store and retrieve records in a database based on a search key value. 
+          It enables operations like insertion, deletion, and searching, which can be performed in constant time when properly implemented. 
+          A well-tuned hash system typically examines only one or two records for each search, insert, or delete operation, outperforming other methods like binary search on a sorted array or a binary search tree with O(logn) average costs. 
+          Despite its simple concept, proper implementation of hashing can be challenging, requiring designers to pay close attention to all the details involved.
+        </p>
+        <p>
+          In a hash system, records are stored in an array known as a hash table (HT). 
+          Hashing involves computing a hash function (denoted as h) on a search key K to identify the position in HT where the record with key K should be placed. 
+          As records are stored based on the address calculation, they are not ordered by value. 
+          Each position in the hash table is referred to as a slot, with the number of slots denoted by M, starting from 0 to M-1.
+        </p>
+        <p>
+          The primary goal of a hashing system is to ensure that for any key value K and hash function h, the resulting position i=h(K) in the table is such that 0≤i Less than M, and the key of the record stored at HT[i] is equal to K.
+        </p>
+        <p>
+          However, hashing may not be suitable for applications that permit multiple records with the same key value or when answering range searches. 
+          It cannot easily find all records within a specific range or determine the minimum or maximum key value or visit records in key order. 
+          Yet, hashing excels at answering exact-match queries, making it the preferred search method for such applications when implemented correctly. 
+          Despite its efficiency, there are various approaches to hashing, and inefficient implementations can be devised. 
+          Hashing is suitable for both in-memory and disk-based searching and is one of the most widely used methods for organizing large databases stored on disk, alongside the B-tree.
+        </p>
+        
+      </section>
+
+      <section xml:id="sec-OpenHashing">
+        <title>Open Hashing</title>
+
+        <p>
+          Hash functions aim to minimize collisions, but in practice, some collisions are inevitable. 
+          Thus, collision resolution policies are essential in hashing implementations. 
+          There are two primary classes of collision resolution techniques: open hashing (or separate chaining) and closed hashing (or open addressing). 
+          Despite the confusing naming convention, open hashing involves storing collisions outside the table, while closed hashing stores one of the records in another slot within the table.
+        </p>
+        <p>
+          In the simplest form of open hashing, each slot in the hash table is the head of a linked list. 
+          All records that hash to a particular slot are placed in that slot's linked list. 
+          This creates a structure where each slot points to a linked list that holds the records associated with that specific slot. 
+          The hash function used in this case is the straightforward mod function. 
+          The following figure illustrates a hash table employing open hashing and the mod function for hash calculations.
+        </p>
+        <p>
+          Open hashing is well-suited for scenarios where the hash table is stored in main memory, and the lists are implemented using standard in-memory linked lists. 
+          However, using open hashing to store a hash table on disk efficiently poses challenges. 
+          Since members of a linked list may be stored in different disk blocks, searching for a specific key value would require multiple disk accesses, undermining the purpose of hashing.
+        </p>
+        <p>
+          Open hashing shares some similarities with Binsort. 
+          In open hashing, each record is placed in a bin, even though multiple records may hash to the same bin. 
+          This initial binning significantly reduces the number of records accessed during a search operation. 
+          Similarly, a simple Binsort organizes records into bins, reducing the number of records in each bin to a small manageable number that can be sorted using a different approach.
+        </p>
+        
+      </section>
+
+      <section xml:id="sec-BucketHash">
+        <title>Bucket Hashing</title>
+
+        <p>
+          Closed hashing stores all records directly in the hash table. 
+          Each record with a key value kR has a home position at h(kR), which is computed by the hash function. 
+          If the home position is occupied during insertion, the record is stored in another slot within the table, and the collision resolution policy determines which slot that will be. 
+          This policy is also followed during search to retrieve any record not found in its home position, repeating the collision resolution process.
+        </p>
+        <p>
+          One implementation of closed hashing involves grouping hash table slots into buckets. 
+          The M slots of the hash table are divided into B buckets, each containing M/B slots. 
+          Records are assigned to the first available slot within a bucket based on the hash function. 
+          If a slot is already taken, the bucket slots are searched sequentially until an open slot is found. 
+          If a bucket becomes full, records are stored in an overflow bucket with infinite capacity located at the end of the table. 
+          All buckets share the same overflow bucket. 
+          A well-designed implementation uses a hash function that evenly distributes records among the buckets to minimize the use of the overflow bucket.
+        </p>
+        <p>
+          During a search for a record, the key is hashed to determine the bucket that should contain the record. 
+          The records in this bucket are then searched. 
+          If the desired key value is not found and the bucket still has free slots, the search is complete. 
+          However, if the bucket is full, it is possible that the desired record is stored in the overflow bucket.
+        </p>
+        
+      </section>
+
+      <section xml:id="sec-CollisionRes">
+        <title>Collision Resolution</title>
+
+        <p>
+          Now, let's focus on the most commonly used form of hashing: closed hashing without bucketing, which employs a collision resolution policy that can potentially use any slot in the hash table. 
+          When inserting a record, collision resolution aims to find a free slot in the hash table if the record's home position is already taken. 
+          We can think of collision resolution methods as generating a sequence of hash table slots that may accommodate the record. 
+          The first slot in the sequence is the home position for the key. 
+          If it's occupied, the collision resolution policy moves to the next slot in the sequence. 
+          If that slot is also taken, it searches for another, and so on. 
+          This sequence of slots is called the probe sequence, generated by a probe function we'll call p.
+        </p>
+        
+      </section>
+
+      <section xml:id="sec-HashLecture">
+        <title>Hash Tables and Hash Maps Lecture</title>
+
+        <p>
+          Here is a link to download the lecture on Hash Tables and Hash Maps:
+          <url href="https://uncc.instructure.com/courses/16965/files/21470969/download?download_frd=1">Slides</url>
+        </p>
+        
+      </section>
+
+      <section xml:id="sec-HashMapLab">
+        <title>HashMap Lab</title>
+
+        <subsection xml:id="subsec-Countingwords">
+          <title>Counting word appearances using a Dictionary and a custom implementation</title>
+
+          <p>
+            A Dictionary (sometimes called associative arrays) enable to store and retrieve (key, value) pairs. 
+            In this assignment, they will be useful to count how many times a particular word appears in Shakespeare's work. 
+            The keys are going to be words. And the value associated with that key is going to be how many times that word appears. 
+            You will be building the hashmap yourself given the scaffolded code. 
+            The only file you will need to edit is the HashTabel.java file.
+          </p>
+          
+        </subsection>
+
+        <subsection xml:id="subsec-HMStart">
+          <title>Getting Started</title>
+
+          <ol>
+            <li>
+              <p>
+                Get your IDE ready for a BRIDGES project and download the scaffold code:
+                <url href="https://uncc.instructure.com/courses/16965/files/21470970?wrap=1">hashassignment.zip</url>
+              </p>
+            </li>
+            <li>
+              <p>
+                Open up the HashTable.java file.
+              </p>
+            </li>
+            <li>
+              <p>
+                Complete all the todo functions
+              </p>
+            </li>
+            <li>
+              <p>
+                Plug in your credentials in PQBook.java.
+              </p>
+            </li>
+            <li>
+              <p>
+                Run the program to see the visual of the hashtable
+              </p>
+            </li>
+          </ol>
+          
+        </subsection>
+
+        <subsection xml:id="subsec-HMComplete">
+          <title>Tasks to Complete</title>
+
+          <ol>
+            <li>
+              <p>
+                Complete the get() function in HashTable.java | 10 pts
+              </p>
+            </li>
+            <li>
+              <p>
+                Complete the set() function in HashTable.java | 10pts
+              </p>
+            </li>
+            <li>
+              <p>
+                Complete the delete() function in HashTable.java | 10pts
+              </p>
+            </li>
+            <li>
+              <p>
+                Complete the resize() function in HashTable.java | 10pts
+              </p>
+            </li>
+          </ol>
+          
+        </subsection>
+
+        <subsection xml:id="subsec-FunctionalityInfo">
+          <title>Functionality Information</title>
+
+          <p>
+            The hashtable uses chaining for collisions so each index in the hashtable will hold a linked list of nodes. 
+            Each Node is an object that holds the key, value, and next position in the linked list.
+          </p>
+          <p>
+            The get() function is used to get a value from the hashtable using the key passed in as a parameter. 
+            You will get the index into the hashtable from the hash function and loop over the list at that index to get the object.
+          </p>
+          <p>
+            The set() function is used to set an object with the given key to a given value. 
+            If an object with the key is in the hashmap, you can set the object's value. 
+            If not, add a new object with the key-value pair.
+          </p>
+          <p>
+            The delete() function removes an object from the hashtable given the key.
+          </p>
+          <p>
+            The resize() function resizes the hashtable once a loadFactor has been reached. 
+            This condition is calculated for you in the set() function. 
+            Once you set a new object in the hashtable, it checks if that loadFactor is reached. 
+            This relies on the count variable being accurate so update the count variable every time a new objects is added.  
+            If so, resize is called. In the resize function, you can interate over the hashtable by doing: for(Node node : this.table). 
+            This will get the first node at each index in the hashtable.
+          </p>
+          
+        </subsection>
+        
+      </section>
+      
+    </chapter>
+
+    <chapter xml:id="ch-Graphs">
+      <title>Graphs</title>
+
+      <section xml:id="sec-GraphsIntro">
+        <title>Graphs Chapter Introduction</title>
+
+        <p>
+          Graphs offer unparalleled versatility as a data structure. 
+          They consist of nodes and edges, where edges connect pairs of nodes. 
+          Notably, both trees and lists can be considered as specific cases of graphs.
+        </p>
+        <p>
+          Graphs find extensive use in modeling real-world systems and abstract problems, making them a preferred data structure in numerous applications. 
+          Below are some examples of the diverse problems for which graphs are routinely employed:
+        </p>
+
+        <ol>
+          <li>
+            <p>
+              Representing connectivity in computer and communication networks.
+            </p>
+          </li>
+          <li>
+            <p>
+              Abstractly mapping locations and distances, useful for calculating shortest routes in GPS navigation.
+            </p>
+          </li>
+          <li>
+            <p>
+              Modeling flow capacities in transportation networks to identify bottlenecks.
+            </p>
+          </li>
+          <li>
+            <p>
+              Solving pathfinding problems from a starting condition to a goal condition, commonly in AI and gaming applications.
+            </p>
+          </li>
+          <li>
+            <p>
+              Depicting computer algorithms, showcasing transitions between program states.
+            </p>
+          </li>
+          <li>
+            <p>
+              Determining an optimal order for completing subtasks in complex activities, like constructing large buildings.
+            </p>
+          </li>
+          <li>
+            <p>
+              Modeling relationships, such as family trees, organizational structures, and scientific classifications.
+            </p>
+          </li>
+        </ol>
+        
+      </section>
+
+      <section xml:id="sec-GraphTrav">
+        <title>Graph Traversals</title>
+
+        <p>
+          Graph traversal, similar to tree traversal, involves visiting vertices in a specific order based on the graph's topology. 
+          Just as tree traversals have various orders like preorder, inorder, and postorder, graph traversals also have different orders, each suited for specific applications. 
+          For example, in artificial intelligence programming, graph traversal is crucial to solving problems involving a collection of states connected by edges.
+        </p>
+        <p>
+          Graph traversal algorithms start from a designated start vertex and aim to visit all remaining vertices. 
+          These algorithms face challenges, such as dealing with disconnected graphs where not all vertices are reachable from the start vertex, or handling cycles without getting stuck in infinite loops.
+        </p>
+        <p>
+          To address these issues, graph traversal algorithms utilize a "VISITED" flag to keep track of visited vertices. 
+          At the beginning of the traversal, no vertices have the "VISITED" flag set. 
+          As the algorithm visits a vertex, it marks it as "VISITED" to avoid revisiting it. 
+          This mechanism prevents infinite loops when encountering cycles.
+        </p>
+        <p>
+          Once the traversal completes, we can check if all vertices have the "VISITED" flag set to ensure that all vertices have been processed. 
+          If some vertices remain unflagged, we can continue the traversal from another unvisited vertex. 
+          Remarkably, this process applies to both directed and undirected graphs.
+        </p>
+        
+      </section>
+
+      <section xml:id="sec-GraphsLeture">
+        <title>Graphs Leture</title>
+
+        <p>
+          Here is a link to download the lecture on graphs:
+          <url href="https://uncc.instructure.com/courses/16965/files/21470971/download?download_frd=1">Slides</url>
+        </p>
+        
+      </section>
+
+      <section xml:id="sec-EarthquakeAssignment">
+        <title>Earthquake Tracker Assignment</title>
+
+        <subsection xml:id="subsec-ETGoals">
+          <title>Goals</title>
+
+          <p>
+            The purpose of this assignment is to learn to
+          </p>
+
+          <ol>
+            <li>
+              <p>
+                Access and manipulate remote data through BRIDGES.
+              </p>
+            </li>
+            <li>
+              <p>
+                Manipulate a GraphAdjList object.
+              </p>
+            </li>
+            <li>
+              <p>
+                Display a location on a map.
+              </p>
+            </li>
+            <li>
+              <p>
+                Optionally, perform basic graph operation (connected component)
+              </p>
+            </li>
+          </ol>
+
+          <p>
+            Please download:
+            <url href="https://bridgesuncc.github.io/assignments/data//4-GraphEQ/java.zip">Earthquake.zip</url>
+          </p>
+          
+        </subsection>
+
+        <subsection xml:id="subsec-ETTasks">
+          <title>Programming Tasks</title>
+
+          <p>
+            Grab recent earthquake data and build a graph representing the locations of the 100 strongest earthquakes.
+          </p>
+
+          <ol>
+            <li>
+              <p>
+                Open your scaffolded code.
+              </p>
+            </li>
+            <li>
+              <p>
+                Plug in your credentials.
+              </p>
+            </li>
+            <li>
+              <p>
+                Get the most recent 10,000 earthquakes.
+              </p>
+            </li>
+            <li>
+              <p>
+                Only retain the 100 highest magnitude earthquakes.
+              </p>
+            </li>
+          </ol>
+          
+        </subsection>
+
+        <subsection xml:id="subsec-PlaceEQ">
+          <title>Place Earthquakes on the map</title>
+
+          <ol>
+            <li>
+              <p>
+                Create a graph where each earthquake is a vertex.
+              </p>
+            </li>
+            <li>
+              <p>
+                Add no edges for now.
+              </p>
+            </li>
+            <li>
+              <p>
+                Pin earthquakes at their longitude and latitude.
+              </p>
+            </li>
+            <li>
+              <p>
+                Tweak the appearance of vertices if you want (e.g., use a different symbols for earthquake in Hawaii or Alaska).
+              </p>
+            </li>
+            <li>
+              <p>
+                Compile, run, and visualize.
+              </p>
+            </li>
+          </ol>
+          
+        </subsection>
+
+        <subsection xml:id="subsec-BuildGraph">
+          <title>Build a graph based on distances</title>
+
+          <p>
+            For each pair of earthquakes:
+          </p>
+
+          <ol>
+            <li>
+              <p>
+                Compute the distance using calcDistance.
+              </p>
+            </li>
+            <li>
+              <p>
+                If the earthquakes are closer than 500km, add an edge between them.
+              </p>
+            </li>
+          </ol>
+
+          <p>
+            Compile, run, and visualize.
+          </p>
+          
+        </subsection>
+
+        <subsection xml:id="subsec-ShowGraph">
+          <title>Show just the graph</title>
+
+          <ol>
+            <li>
+              <p>
+                Deactivate the map overlay (already done in the scaffolding).
+              </p>
+            </li>
+            <li>
+              <p>
+                Unpin the vertices by setting their location to infinity.
+              </p>
+            </li>
+            <li>
+              <p>
+                Compile, run, and visualize.
+              </p>
+            </li>
+          </ol>
+          
+        </subsection>
+        
+      </section>
+      
+    </chapter>
+
     <backmatter xml:id="backmatter">
       <title>Backmatter</title>
 
