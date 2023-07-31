@@ -36,6 +36,8 @@
       <stringparam key="debug.skip-knowls" value="yes"/>
     </target>
     <target name="runestone">
+      <format>html</format>
+      <source>source/main.ptx</source>
       <publication>publication/runestone.ptx</publication>
       <output-dir>published/bridgesds</output-dir>
     </target>
