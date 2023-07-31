@@ -277,6 +277,7 @@ eBookConfig.enable_chatcodes =  false;
 <ul class="structural">
 <li><div class="toc-item"><a href="sec-ADTGenerics.html#subsec-Algorithms" class="internal"><span class="codenumber">3.3.1</span> <span class="title">Algorithms</span></a></div></li>
 <li><div class="toc-item"><a href="sec-ADTGenerics.html#subsec-GuidelineofDSSel" class="internal"><span class="codenumber">3.3.2</span> <span class="title">Guideline of Data Structure Selection</span></a></div></li>
+<li><div class="toc-item"><a href="sec-ADTGenerics.html#subsec-ADTopenDSA" class="internal"><span class="codenumber">3.3.3</span> <span class="title">Learn more about ADT</span></a></div></li>
 </ul>
 </li>
 <li><div class="toc-item"><a href="sec-PatternTutorial.html" class="internal"><span class="codenumber">3.4</span> <span class="title">Pattern Tutorial</span></a></div></li>
@@ -291,9 +292,13 @@ eBookConfig.enable_chatcodes =  false;
 <li><div class="toc-item"><a href="sec-PAP.html#subsec-Problems" class="internal"><span class="codenumber">4.1.1</span> <span class="title">Problems</span></a></div></li>
 <li><div class="toc-item"><a href="sec-PAP.html#subsec-Algorithms2" class="internal"><span class="codenumber">4.1.2</span> <span class="title">Algorithms</span></a></div></li>
 <li><div class="toc-item"><a href="sec-PAP.html#subsec-Programs" class="internal"><span class="codenumber">4.1.3</span> <span class="title">Programs</span></a></div></li>
+<li><div class="toc-item"><a href="sec-PAP.html#subsec-PAPOpenDSA" class="internal"><span class="codenumber">4.1.4</span> <span class="title">More about Problems, Algorithms, and Programs</span></a></div></li>
 </ul>
 </li>
-<li><div class="toc-item"><a href="sec-BWAvgCases.html" class="internal"><span class="codenumber">4.2</span> <span class="title">Best, Worst, and Average Cases</span></a></div></li>
+<li>
+<div class="toc-item"><a href="sec-BWAvgCases.html" class="internal"><span class="codenumber">4.2</span> <span class="title">Best, Worst, and Average Cases</span></a></div>
+<ul class="structural"><li><div class="toc-item"><a href="sec-BWAvgCases.html#subsec-BWAOpenDSA" class="internal"><span class="codenumber">4.2.1</span> <span class="title">More about Best, Worst, and Average cases</span></a></div></li></ul>
+</li>
 <li><div class="toc-item"><a href="sec-ComputerorAlgorithm.html" class="internal"><span class="codenumber">4.3</span> <span class="title">Faster Computer, or Faster Algorithm</span></a></div></li>
 <li><div class="toc-item"><a href="sec-AALecture.html" class="internal"><span class="codenumber">4.4</span> <span class="title">Algorithm Analysis Lecture</span></a></div></li>
 <li><div class="toc-item"><a href="sec-ComplexityMatters.html" class="internal"><span class="codenumber">4.5</span> <span class="title">Complexity Matters</span></a></div></li>
@@ -402,6 +407,7 @@ eBookConfig.enable_chatcodes =  false;
 <li><div class="toc-item"><a href="sec-BTTraversals.html#subsec-PostorderTraversal" class="internal"><span class="codenumber">10.3.3</span> <span class="title">Postorder Traversal</span></a></div></li>
 <li><div class="toc-item"><a href="sec-BTTraversals.html#subsec-InorderTraversal" class="internal"><span class="codenumber">10.3.4</span> <span class="title">Inorder Traversal</span></a></div></li>
 <li><div class="toc-item"><a href="sec-BTTraversals.html#subsec-Implementation" class="internal"><span class="codenumber">10.3.5</span> <span class="title">Implementation</span></a></div></li>
+<li><div class="toc-item"><a href="sec-BTTraversals.html#subsec-BTTOpenDSA" class="internal"><span class="codenumber">10.3.6</span> <span class="title">Examples of Preorder, Postorder, and Inorder Traversals</span></a></div></li>
 </ul>
 </li>
 <li><div class="toc-item"><a href="sec-BinarySearchTrees.html" class="internal"><span class="codenumber">10.4</span> <span class="title">Binary Search Trees</span></a></div></li>
@@ -419,7 +425,7 @@ eBookConfig.enable_chatcodes =  false;
 <li>
 <div class="toc-item"><a href="ch-Hashing.html" class="internal"><span class="codenumber">11</span> <span class="title">Hashing</span></a></div>
 <ul class="structural">
-<li><div class="toc-item"><a href="sec-HashIntro.html" class="internal"><span class="codenumber">11.1</span> <span class="title">Introduction</span></a></div></li>
+<li><div class="toc-item"><a href="sec-HashIntro.html" class="internal"><span class="codenumber">11.1</span> <span class="title">Introduction to Hashing</span></a></div></li>
 <li><div class="toc-item"><a href="sec-OpenHashing.html" class="internal"><span class="codenumber">11.2</span> <span class="title">Open Hashing</span></a></div></li>
 <li><div class="toc-item"><a href="sec-BucketHash.html" class="internal"><span class="codenumber">11.3</span> <span class="title">Bucket Hashing</span></a></div></li>
 <li><div class="toc-item"><a href="sec-CollisionRes.html" class="internal"><span class="codenumber">11.4</span> <span class="title">Collision Resolution</span></a></div></li>
@@ -458,16 +464,16 @@ eBookConfig.enable_chatcodes =  false;
 <main class="ptx-main"><div id="ptx-content" class="ptx-content"><section class="section" id="sec-RecIntro"><h2 class="heading hide-type">
 <span class="type">Section</span> <span class="codenumber">9.1</span> <span class="title">Introduction to Recursion</span>
 </h2>
-<div class="para" id="p-221">An algorithm or function is considered recursive when it calls itself to perform a portion of its task. Recursion offers a way to solve complex problems using concise, easily understandable, and efficient programs. It involves breaking down a large problem into one or more sub-problems that have the same structure as the original problem but are simpler to solve. This process continues until the sub-problems become straightforward enough to be solved without further division. The final solution is then obtained by combining the solved components.</div>
-<div class="para" id="p-222">To ensure the success of a recursive approach, the recursive call to the function must operate on a smaller problem compared to the original one. Typically, a recursive algorithm consists of two parts:</div>
+<div class="para" id="p-230">An algorithm or function is considered recursive when it calls itself to perform a portion of its task. Recursion offers a way to solve complex problems using concise, easily understandable, and efficient programs. It involves breaking down a large problem into one or more sub-problems that have the same structure as the original problem but are simpler to solve. This process continues until the sub-problems become straightforward enough to be solved without further division. The final solution is then obtained by combining the solved components.</div>
+<div class="para" id="p-231">To ensure the success of a recursive approach, the recursive call to the function must operate on a smaller problem compared to the original one. Typically, a recursive algorithm consists of two parts:</div>
 <ol class="decimal">
-<li id="li-61"><div class="para" id="p-223">The base case, which handles a simple input that can be solved directly without further recursion.</div></li>
-<li id="li-62"><div class="para" id="p-224">The recursive part, which includes one or more recursive calls to the algorithm. In each recursive call, the parameters should be closer to the base case than those in the original call.</div></li>
+<li id="li-61"><div class="para" id="p-232">The base case, which handles a simple input that can be solved directly without further recursion.</div></li>
+<li id="li-62"><div class="para" id="p-233">The recursive part, which includes one or more recursive calls to the algorithm. In each recursive call, the parameters should be closer to the base case than those in the original call.</div></li>
 </ol>
-<div class="para" id="p-225">Recursion doesn't have a direct counterpart in everyday problem-solving, which can make it challenging to grasp initially. When first learning recursion, it's common to focus on understanding the recursive process. However, when writing recursive functions, it's best to shift the focus away from the inner workings of recursion and instead concentrate on the recursive call. Trust that the sub-problems will be handled correctly and focus on defining the base cases and how to combine the results of the sub-problems.</div>
-<div class="para" id="p-226">Recursion is primarily used as a tool to simplify algorithm design and description. It may not always yield the most efficient program since function calls involved in recursion tend to have higher overhead compared to other alternatives like using a while loop. However, recursive approaches generally provide reasonably efficient algorithms. If needed, the clear and recursive solution can be further optimized to achieve faster implementations.</div>
-<div class="para" id="p-227">When we solve a "big" problem recursively, we break it down into smaller versions of the problem and solve each of them. The solutions to these smaller problems are then used to solve the original "big" problem. Recursive problem-solving involves tackling the smaller versions in a similar manner.</div>
-<div class="para" id="p-228">For instance, let's consider the task of summing values in an array. What sets apart summing the first 50 elements from summing the first 100 elements? We can use the same approach for both scenarios. In fact, we can even leverage the solution to the smaller problem (summing the first 50 elements) to help us solve the larger problem (summing the first 100 elements).</div></section></div>
+<div class="para" id="p-234">Recursion doesn't have a direct counterpart in everyday problem-solving, which can make it challenging to grasp initially. When first learning recursion, it's common to focus on understanding the recursive process. However, when writing recursive functions, it's best to shift the focus away from the inner workings of recursion and instead concentrate on the recursive call. Trust that the sub-problems will be handled correctly and focus on defining the base cases and how to combine the results of the sub-problems.</div>
+<div class="para" id="p-235">Recursion is primarily used as a tool to simplify algorithm design and description. It may not always yield the most efficient program since function calls involved in recursion tend to have higher overhead compared to other alternatives like using a while loop. However, recursive approaches generally provide reasonably efficient algorithms. If needed, the clear and recursive solution can be further optimized to achieve faster implementations.</div>
+<div class="para" id="p-236">When we solve a "big" problem recursively, we break it down into smaller versions of the problem and solve each of them. The solutions to these smaller problems are then used to solve the original "big" problem. Recursive problem-solving involves tackling the smaller versions in a similar manner.</div>
+<div class="para" id="p-237">For instance, let's consider the task of summing values in an array. What sets apart summing the first 50 elements from summing the first 100 elements? We can use the same approach for both scenarios. In fact, we can even leverage the solution to the smaller problem (summing the first 50 elements) to help us solve the larger problem (summing the first 100 elements).</div></section></div>
 <div class="ptx-content-footer">
 <a class="previous-button button" href="ch-Recursion.html" title="Previous"><span class="icon">&lt;</span><span class="name">Prev</span></a><a class="top-button button" href="#" title="Top"><span class="icon">^</span><span class="name">Top</span></a><a class="next-button button" href="sec-RecurCode.html" title="Next"><span class="name">Next</span><span class="icon">&gt;</span></a>
 </div></main>

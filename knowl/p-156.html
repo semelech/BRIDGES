@@ -12,7 +12,7 @@
 </head>
 <body class="ignore-math">
 <h3 class="heading"><span class="type">Paragraph</span></h3>
-<div class="para">The linked queue implementation is a straightforward adaptation of the linked list. In terms of time efficiency, both implementations provide constant-time operations, ensuring efficient queue functionality. However, the choice between array-based and linked implementations may depend on specific space requirements and the need for dynamic resizing.</div>
-<span class="incontext"><a href="sec-ArrayvsQueues.html#p-156" class="internal">in-context</a></span>
+<div class="para">When implementing multiple stacks, there is a possibility to leverage the one-way growth characteristic of the array-based stack by using a single array to store two stacks. Each stack grows inward from opposite ends, as illustrated in the figure below, which can help minimize wasted space. However, this approach works best when the space requirements of the two stacks are inversely correlated. Ideally, when one stack grows, the other should shrink. This technique proves particularly effective when elements are transferred between the two stacks. In contrast, if both stacks grow simultaneously, the free space in the middle of the array will be depleted rapidly.</div>
+<span class="incontext"><a href="sec-LinkedStacks.html#p-156" class="internal">in-context</a></span>
 </body>
 </html>

@@ -12,7 +12,7 @@
 </head>
 <body class="ignore-math">
 <h3 class="heading"><span class="type">Paragraph</span></h3>
-<div class="para">When implementing multiple stacks, there is a possibility to leverage the one-way growth characteristic of the array-based stack by using a single array to store two stacks. Each stack grows inward from opposite ends, as illustrated in the figure below, which can help minimize wasted space. However, this approach works best when the space requirements of the two stacks are inversely correlated. Ideally, when one stack grows, the other should shrink. This technique proves particularly effective when elements are transferred between the two stacks. In contrast, if both stacks grow simultaneously, the free space in the middle of the array will be depleted rapidly.</div>
-<span class="incontext"><a href="sec-LinkedStacks.html#p-151" class="internal">in-context</a></span>
+<div class="para">The element that is accessible and can be manipulated on top of the stack is referred to as the top element. Elements are not inserted into a stack; rather, they are pushed onto the stack. Similarly, when an element is removed from a stack, it is popped. Here is a simple abstract data type (ADT) for a stack.</div>
+<span class="incontext"><a href="sec-StackTerm.html#p-151" class="internal">in-context</a></span>
 </body>
 </html>

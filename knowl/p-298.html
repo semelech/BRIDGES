@@ -11,8 +11,8 @@
 <meta name="robots" content="noindex, nofollow">
 </head>
 <body class="ignore-math">
-<h4 class="heading"><span class="type">Paragraph</span></h4>
-<div class="para">The hashtable uses chaining for collisions so each index in the hashtable will hold a linked list of nodes. Each Node is an object that holds the key, value, and next position in the linked list.</div>
-<span class="incontext"><a href="sec-HashMapLab.html#p-298" class="internal">in-context</a></span>
+<h3 class="heading"><span class="type">Paragraph</span></h3>
+<div class="para">One implementation of closed hashing involves grouping hash table slots into buckets. The M slots of the hash table are divided into B buckets, each containing M/B slots. Records are assigned to the first available slot within a bucket based on the hash function. If a slot is already taken, the bucket slots are searched sequentially until an open slot is found. If a bucket becomes full, records are stored in an overflow bucket with infinite capacity located at the end of the table. All buckets share the same overflow bucket. A well-designed implementation uses a hash function that evenly distributes records among the buckets to minimize the use of the overflow bucket.</div>
+<span class="incontext"><a href="sec-BucketHash.html#p-298" class="internal">in-context</a></span>
 </body>
 </html>
