@@ -765,6 +765,16 @@
 
         </subsection>
 
+        <subsection xml:id="subsec-ADTopenDSA">
+          <title>Learn more about ADT</title>
+
+          <p>
+            Here is a link to the OpenDSA textbook that talks more about ADT and shows examples:
+            <url href="https://opendsa-server.cs.vt.edu/OpenDSA/Books/Everything/html/ListADT.html#list-adt-programming-exercise">Read me</url>
+          </p>
+          
+        </subsection>
+
       </section>
 
       <section xml:id="sec-PatternTutorial">
@@ -900,6 +910,16 @@
           </p>
 
         </subsection>
+
+        <subsection xml:id="subsec-PAPOpenDSA">
+          <title>More about Problems, Algorithms, and Programs</title>
+
+          <p>
+            Here is a link to the OpenDSA textbook that visually shows the differences between problems, algorithms, and programs:
+            <url href="https://opendsa-server.cs.vt.edu/OpenDSA/Books/Everything/html/AnalPrelim.html#id1">Read Me</url>
+          </p>
+          
+        </subsection>
         
       </section>
 
@@ -937,6 +957,16 @@
           In summary, for real-time applications, a worst-case analysis is often preferred. Otherwise, if sufficient knowledge about the input distribution is available, an average-case analysis is desirable. 
           In the absence of such knowledge, resorting to a worst-case analysis becomes necessary.
         </p>
+
+        <subsection xml:id="subsec-BWAOpenDSA">
+          <title>More about Best, Worst, and Average cases</title>
+
+          <p>
+            Here is a link to the OpenDSA textbook that has some examples on working with different algorithms:
+            <url href="https://opendsa-server.cs.vt.edu/OpenDSA/Books/Everything/html/AnalCases.html">Read Me</url>
+          </p>
+          
+        </subsection>
 
       </section>
 
@@ -1068,6 +1098,10 @@
           In subsequent lessons, you will delve into linked lists, which are constructed using link nodes. 
           However, for now, we will utilize link nodes as a straightforward means to connect various objects together.
         </p>
+        <p>
+          Here is a link to the OpenDSA textbook that goes more in-depth about linked nodes:
+          <url href="https://opendsa-server.cs.vt.edu/OpenDSA/Books/Everything/html/Links1.html#id1">Read Me</url>
+        </p>
         
       </section>
 
@@ -1186,6 +1220,11 @@
           Elements are not inserted into a stack; rather, they are pushed onto the stack. 
           Similarly, when an element is removed from a stack, it is popped. Here is a simple abstract data type (ADT) for a stack.
         </p>
+
+        <p>
+          Here is a link to the OpenDSA textbook that shows how to implement linked stacks:
+          <url href="https://opendsa-server.cs.vt.edu/OpenDSA/Books/Everything/html/StackLinked.html">Read Me</url>
+        </p>
         
       </section>
 
@@ -1248,6 +1287,11 @@
           In Britain, a line of people is referred to as a "queue," and the act of joining the line to wait for service is known as "queuing up." 
           Accountants have been using queues long before computers existed and refer to them as "FIFO" lists, which stands for "First-In, First-Out."
         </p>
+
+        <p>
+          Here is a link to the OpenDSA textbook that has more information on queue terminology:
+          <url href="https://opendsa-server.cs.vt.edu/OpenDSA/Books/Everything/html/Queue.html">Read Me</url>
+        </p>
         
       </section>
 
@@ -1264,6 +1308,11 @@
           The linked queue implementation is a straightforward adaptation of the linked list.
           In terms of time efficiency, both implementations provide constant-time operations, ensuring efficient queue functionality. 
           However, the choice between array-based and linked implementations may depend on specific space requirements and the need for dynamic resizing.
+        </p>
+
+        <p>
+          Here is a link to the OpenDSA textbook that has more practice on linked queues:
+          <url href="https://opendsa-server.cs.vt.edu/OpenDSA/Books/Everything/html/QueueLinked.html">Read Me</url>
         </p>
         
       </section>
@@ -1553,6 +1602,10 @@
           While they require fewer comparisons for larger arrays, their cost per comparison is higher. 
           Although this observation may seem less beneficial, there are instances where numerous sorting operations are performed on very small arrays.
         </p>
+        <p>
+          Here is a link to the OpenDSA textbook that has examples for insertion sort:
+          <url href="https://opendsa-server.cs.vt.edu/OpenDSA/Books/Everything/html/InsertionSort.html">Read Me</url>
+        </p>
         
       </section>
 
@@ -1576,6 +1629,10 @@
           For instance, we could have designed Selection Sort to find the smallest record, followed by the next smallest, and so forth. 
           However, in our version, we aimed to closely resemble the behavior of our Bubble Sort implementation. 
           This highlights that Selection Sort is essentially a modified version of Bubble Sort, where we keep track of the position of the record to be selected and perform a single swap at the end.
+        </p>
+        <p>
+          Here is a link to the OpenDSA textbook that has examples for selection sort:
+          <url href="https://opendsa-server.cs.vt.edu/OpenDSA/Books/Everything/html/SelectionSort.html">Read Me</url>
         </p>
         
       </section>
@@ -1821,6 +1878,10 @@
           Then, as the series of recursive calls unwinds, a return value is passed back. 
           It's important not to overlook the unwinding phase, as it completes the recursive process.
         </p>
+        <p>
+          Here is a link to the OpenDSA textbook that has some exercises to help you trace recursive code:
+          <url href="https://opendsa-server.cs.vt.edu/OpenDSA/Books/Everything/html/Trace.html">Read Me</url>
+        </p>
         
       </section>
 
@@ -1901,6 +1962,10 @@
           Although binary trees are frequently used for searching purposes, their applications extend beyond that. 
           They can accelerate tasks such as job prioritization, representing mathematical expressions and program syntax, and organizing data for compression algorithms.
           In this chapter, we will explore the terminology associated with binary trees, methods for traversing trees, techniques for implementing tree nodes, and several examples of binary trees.
+        </p>
+        <p>
+          Here is a link to the OpenDSA textbook that goes in-depth about binary tree properties:
+          <url href="https://opendsa-server.cs.vt.edu/OpenDSA/Books/Everything/html/BinaryTree.html">Read Me</url>
         </p>
         
       </section>
@@ -2006,6 +2071,16 @@
             Some applications only require data values for the leaf nodes, while others need different types of values for internal and leaf nodes. 
             It may seem wasteful to store child pointers in leaf nodes if they have no children. 
             Thus, having distinct implementations for internal and leaf nodes can provide space optimization benefits.
+          </p>
+          
+        </subsection>
+
+        <subsection xml:id="subsec-BTTOpenDSA">
+          <title>Examples of Preorder, Postorder, and Inorder Traversals</title>
+
+          <p>
+            Here is a link to the OpenDSA textbook that has examples for Preorder, Postorder, and Inorder traversals:
+            <url href="https://opendsa-server.cs.vt.edu/OpenDSA/Books/Everything/html/BinaryTreeTraversal.html#preorder-traversal">Read Me</url>
           </p>
           
         </subsection>
@@ -2170,7 +2245,7 @@
       <title>Hashing</title>
 
       <section xml:id="sec-HashIntro">
-        <title>Introduction</title>
+        <title>Introduction to Hashing</title>
 
         <p>
           Hashing is a method used to store and retrieve records in a database based on a search key value. 
@@ -2193,6 +2268,10 @@
           Yet, hashing excels at answering exact-match queries, making it the preferred search method for such applications when implemented correctly. 
           Despite its efficiency, there are various approaches to hashing, and inefficient implementations can be devised. 
           Hashing is suitable for both in-memory and disk-based searching and is one of the most widely used methods for organizing large databases stored on disk, alongside the B-tree.
+        </p>
+        <p>
+          Here is a link to the OpenDSA textbook that has some sample hash functions:
+          <url href="https://opendsa-server.cs.vt.edu/OpenDSA/Books/Everything/html/HashFuncExamp.html">Read Me</url>
         </p>
         
       </section>
@@ -2224,6 +2303,10 @@
           This initial binning significantly reduces the number of records accessed during a search operation. 
           Similarly, a simple Binsort organizes records into bins, reducing the number of records in each bin to a small manageable number that can be sorted using a different approach.
         </p>
+        <p>
+          Here is a link to the OpenDSA textbook that can tell you more about open hashing:
+          <url href="https://opendsa-server.cs.vt.edu/OpenDSA/Books/Everything/html/OpenHash.html">Read Me</url>
+        </p>
         
       </section>
 
@@ -2250,6 +2333,10 @@
           The records in this bucket are then searched. 
           If the desired key value is not found and the bucket still has free slots, the search is complete. 
           However, if the bucket is full, it is possible that the desired record is stored in the overflow bucket.
+        </p>
+        <p>
+          Here is a link to the OpenDSA textbook that can tell you more about bucket hashing:
+          <url href="https://opendsa-server.cs.vt.edu/OpenDSA/Books/Everything/html/BucketHash.html">Read Me</url>
         </p>
         
       </section>
@@ -2444,6 +2531,11 @@
             </p>
           </li>
         </ol>
+
+        <p>
+          Here is a link to the OpenDSA textbook that shows examples of different graphs:
+          <url href="https://opendsa-server.cs.vt.edu/OpenDSA/Books/Everything/html/GraphIntro.html">Read Me</url>
+        </p>
         
       </section>
 
@@ -2469,6 +2561,10 @@
           Once the traversal completes, we can check if all vertices have the "VISITED" flag set to ensure that all vertices have been processed. 
           If some vertices remain unflagged, we can continue the traversal from another unvisited vertex. 
           Remarkably, this process applies to both directed and undirected graphs.
+        </p>
+        <p>
+          Here is a link to the OpenDSA textbook that has great visualizations of graph traversals:
+          <url href="https://opendsa-server.cs.vt.edu/OpenDSA/Books/Everything/html/GraphTraversal.html">Read Me</url>
         </p>
         
       </section>
